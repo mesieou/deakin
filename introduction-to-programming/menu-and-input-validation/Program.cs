@@ -1,9 +1,8 @@
 ﻿using static System.Convert;
 using static SplashKitSDK.SplashKit;
 
-string line;
 int choice;
-
+string line;
 
 do
 {
@@ -13,8 +12,16 @@ do
     WriteLine("4: Divition");
     WriteLine("5: Quit");
     WriteLine("Enter your Choice: ");
-    choice = ToInt32(ReadLine());
-    
+    line = ReadLine();
+
+    while (! IsInteger(line) ){
+        WriteLine("Invalid format. Please type a number like 4");
+        WriteLine("Enter your Choice: ");
+        line = ReadLine();
+
+    }
+    choice = ToInt32(line);
+
     switch(choice)
     {
         case 1: 
