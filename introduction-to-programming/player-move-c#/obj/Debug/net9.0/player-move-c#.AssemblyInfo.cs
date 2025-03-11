@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("player-move-c#")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c6e23cbaf9eaf699fe4881cd32d1aa45451b405")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8aefa939554c8e9632174019a402cfa7eb0dbc2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("player-move-c#")]
 [assembly: System.Reflection.AssemblyTitleAttribute("player-move-c#")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
