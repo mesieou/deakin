@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("menu-and-input-validation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e82bc15810b1e435d848f077d555a6cdd17de3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de416232abb1ccdc145747b479e696ccb1807629")]
 [assembly: System.Reflection.AssemblyProductAttribute("menu-and-input-validation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("menu-and-input-validation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
