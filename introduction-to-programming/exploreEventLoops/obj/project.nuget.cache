@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "VsV8azoFs20=",
+  "success": true,
+  "projectFilePath": "/Users/juanbernal/code/mesieou/2025/deakin/introduction-to-programming/exploreEventLoops/exploreEventLoops.csproj",
+  "expectedPackageFiles": [
+    "/Users/juanbernal/.nuget/packages/splashkit/1.2.9/splashkit.1.2.9.nupkg.sha512"
+  ],
+  "logs": []
+}
