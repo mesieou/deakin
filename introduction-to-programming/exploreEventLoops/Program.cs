@@ -5,7 +5,7 @@ using static SplashKitSDK.SplashKit;
 //Open a window
 OpenWindow("Event loops", 980, 720);
 
-// string radious;
+int radious = 50;
 // window will keep opened until the user exits the window
 while (! QuitRequested())
 {
@@ -14,31 +14,36 @@ while (! QuitRequested())
     //logic if user presses c
     if (KeyTyped(KeyCode.CKey))
     {
-        WriteLine("pressed c");
+        ClearScreen(RandomColor());
     }
+
+    //logic if user presses s
      if (KeyTyped(KeyCode.SKey))
     {
-        WriteLine("pressed s");
+        radious = 10;
     }
+
+    //logic if user presses m
      if (KeyTyped(KeyCode.MKey))
     {
-        WriteLine("pressed m");
+        radious = 50;
     }
+
+    //logic if user presses l
      if (KeyTyped(KeyCode.LKey))
     {
-        WriteLine("pressed l");
+        radious = 100;
     }
+
+    //logic if user presses 5
      if (KeyTyped(KeyCode.Num5Key))
-    {
-        WriteLine("pressed 5");
-    }                    
-
-
-
-    //logic if the user clicks
-      //draw circle where the user clicked with a random color
+    { 
+        //added 100 random circles
+        for (int i = 0; i < 100; i++)
+        {
+            FillCircle(RandomColor(), Rnd(ScreenWidth()), Rnd(ScreenHeight()), radious);
+        }
+    } 
     
-
-    //create the radious set to 50
-    
+    RefreshScreen();                       
 }
