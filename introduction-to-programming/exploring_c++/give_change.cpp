@@ -15,8 +15,8 @@ const int FIVE_CENTS = 5;
 
 void give_change(int change)
 {
-    int coin_value;
-    int curr_change = change;
+    int coin_value, coin_quantity;
+    int curr_change = change * 100;
     string coin_text;
     
     for(int i = 0; i < NUM_COIN_TYPES; i++)
@@ -48,13 +48,64 @@ void give_change(int change)
             coin_text = "5c, ";
             break;
         }
-        int coin_quantity = floor(curr_change / coin_value);
+        coin_quantity = curr_change / coin_value;
         curr_change -= coin_value * coin_quantity;
-        write_line(to_string(curr_change) + " x " + coin_text);
+        write_line(to_string(coin_quantity) + " x " + coin_text);
     }
 }
 
+string read_string(string prompt)
+{
+    write_line(prompt);
+    return read_line();
+}
+
+int read_integer(string prompt, 
+                 int from = numeric_limits<int>::min(), 
+                 int to = numeric_limits<int>::max())
+{
+    string user_output = read_string(prompt);
+    
+    while(!is_integer(user_output))
+    {
+        write_line("Please enter a whole number./n");
+        user_output = read_string(prompt);
+    }
+
+    int user_output_int = convert_to_integer(user_output);
+    while (!(user_output_int > from and user_output_int < to))
+    {
+        stringstream ss;
+        ss << "Please enter a number from " << from << " to " << to;
+
+        write_line( ss.str());
+        user_output_int = convert_to_integer(read_string(prompt));
+    } 
+
+    return user_output_int;
+}
+
+
 int main()
 {
+    int item_cost, amount_paid;
+    string again = "";
+
+    do
+    {
+        item_cost = read_integer("Please enter the cost: ");
+        amount_paid = read_integer("Please enter the amount paid: ");
+        
+        if(amount_paid >= item_cost)
+        {
+            give_change(amount_paid - item_cost);
+        } else {
+            write_line("How came you paid less than what it costs?");
+        }
+
+        write_line("Would you like to start over: [y or n]");
+        again = read_line();
+
+    } while (again != "n" && again != "N");
     
 }
