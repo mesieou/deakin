@@ -1,5 +1,6 @@
 #include "splashkit.h"
 
+
 // prints anything a number of times with a space at the end if needed
 void print_repeated(string text, int times, bool with_newline)
 {
