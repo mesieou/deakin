@@ -21,7 +21,7 @@ int read_integer(string prompt,
     
     while(!is_integer(user_output))
     {
-        write_line("Please enter a whole number./n");
+        write_line("Please enter a whole number");
         user_output = read_string(prompt);
     }
 
@@ -62,7 +62,6 @@ void play_game()
     
     write_line("Try to guess a number between 1 and " + to_string(MAX_NUMBER));   
     
-
     do
     {
         guess_number++;
@@ -75,8 +74,34 @@ void play_game()
     }
 }
 
+void print_repeated(string text, int times, bool with_newline)
+{
+  for (int i = 0; i < times; i++)
+  {
+    write(text);
+  }
+
+  if (with_newline)
+  {
+    write_line("\n");
+  }
+}
+
+void print_line(int length)
+{
+  print_repeated("-", length, true);
+}
+
 int main()
 {   
-    play_game();
+    string play_again;
+    do
+    {
+        play_game();
+        print_line(25);
+        write_line("Play again? [Y or N]: ");
+        play_again = read_line();
+    } while (play_again != "n" && play_again != "N");
+    
     return 0;
 }
