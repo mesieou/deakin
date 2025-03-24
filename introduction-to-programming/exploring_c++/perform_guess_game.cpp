@@ -4,6 +4,9 @@
 using std::to_string;
 using namespace std;
 
+const int MAX_NUMBER = 100;
+const int MAX_GUESSES = 7;
+
 string read_string(string prompt)
 {
     write_line(prompt);
@@ -51,10 +54,29 @@ bool perform_guess(int attempt_number, int target)
     return guess == target;
 }
 
+void play_game()
+{
+    int random_int = rnd(1, MAX_NUMBER);
+    int guess_number = 0;
+    bool guess_result;
+    
+    write_line("Try to guess a number between 1 and " + to_string(MAX_NUMBER));   
+    
+
+    do
+    {
+        guess_number++;
+        guess_result = perform_guess(guess_number, random_int);
+    } while (guess_number < MAX_GUESSES && !guess_result);
+
+    if(!guess_result)
+    {
+        write_line("You ran out of guesses... the numbers was " + to_string(random_int));
+    }
+}
+
 int main()
 {   
-    perform_guess(1, 37);
-    perform_guess(2, 37);
-    perform_guess(3, 37);
+    play_game();
     return 0;
 }
