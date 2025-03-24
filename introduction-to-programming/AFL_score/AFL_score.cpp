@@ -35,6 +35,7 @@ int read_integer(string prompt,
         write_line( ss.str());
         user_output_int = convert_to_integer(read_string(prompt));
     }
+    return user_output_int;
 }
 // Calculate scores
 int calculate_scores(int goals, int behinds)
@@ -52,18 +53,20 @@ void output_details(string team_name, int team_score, int goals, int behinds)
 string calculate_winner(string team_name_1, string team_name_2, int team_score_1, int team_score_2)
 {
     write_line("Calculating details...");
+    string winner;
 
     if(team_score_1 > team_score_2)
     {
-        return team_name_1;
+        winner = team_name_1;
     
     } else if(team_score_2 > team_score_1)
     {
-        return team_name_2;
-    } 
+        winner = team_name_2;
+    }
+    return winner; 
 }
 
-string print_menu(string team_name_1, string team_name_2)
+int print_menu(string team_name_1, string team_name_2)
 {
     write_line("1: Update " + team_name_1 + " goals");
     write_line("2: Update " + team_name_1 + " behinds");
@@ -71,6 +74,7 @@ string print_menu(string team_name_1, string team_name_2)
     write_line("4: Update " + team_name_2 + " behinds");
     write_line("5: Print details:");
     write_line("6: Quit");
+    return read_integer("Option: ");
 }
 
 int main()
@@ -96,4 +100,14 @@ int main()
     write_line("The " + winner + " is winning");
     output_details(team_name_1, team_1_score, team_1_goals, team_1_behinds);
     output_details(team_name_2, team_2_score, team_2_goals, team_2_behinds);
+    
+    write_line("");
+    do
+    {
+        int user_option = print_menu(team_name_1, team_name_2);
+    } while (user_option != 6);
+    
+
+
+
 }
