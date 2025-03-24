@@ -46,12 +46,14 @@ int calculate_scores(int goals, int behinds)
 // Displays the winner and the player scores
 void output_details(string team_name, int team_score, int goals, int behinds)
 {
+    write_line("");
     write_line(team_name + ": " + to_string(goals) + ", " + to_string(behinds) + ", " + to_string(team_score));
 }
 
 //calculate the winner and return names and scores
 string calculate_winner(string team_name_1, string team_name_2, int team_score_1, int team_score_2)
 {
+    write_line("");
     write_line("Calculating details...");
     string winner;
 
@@ -66,6 +68,7 @@ string calculate_winner(string team_name_1, string team_name_2, int team_score_1
     return winner; 
 }
 
+//print the menu to the user
 int print_menu(string team_name_1, string team_name_2)
 {
     write_line("");
@@ -104,8 +107,8 @@ int main()
     write_line("The " + winner + " is winning");
     output_details(team_name_1, team_1_score, team_1_goals, team_1_behinds);
     output_details(team_name_2, team_2_score, team_2_goals, team_2_behinds);
-    
     write_line("");
+
     do
     {
         user_option = print_menu(team_name_1, team_name_2);
