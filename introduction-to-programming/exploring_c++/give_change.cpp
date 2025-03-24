@@ -53,3 +53,8 @@ void give_change(int change)
         write_line(to_string(curr_change) + " x " + coin_text);
     }
 }
+
+int main()
+{
+    
+}
