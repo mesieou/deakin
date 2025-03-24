@@ -68,17 +68,20 @@ string calculate_winner(string team_name_1, string team_name_2, int team_score_1
 
 int print_menu(string team_name_1, string team_name_2)
 {
+    write_line("");
     write_line("1: Update " + team_name_1 + " goals");
     write_line("2: Update " + team_name_1 + " behinds");
     write_line("3: Update " + team_name_2 + " goals");
     write_line("4: Update " + team_name_2 + " behinds");
     write_line("5: Print details:");
     write_line("6: Quit");
+    write_line("");
     return read_integer("Option: ");
 }
 
 int main()
 {
+    int user_option;
     write_line("Welcome to the AFL score calculator!");
     write_line("");
 
@@ -97,6 +100,7 @@ int main()
 
     string winner = calculate_winner(team_name_1, team_name_2, team_1_score, team_2_score);
 
+    write_line("");
     write_line("The " + winner + " is winning");
     output_details(team_name_1, team_1_score, team_1_goals, team_1_behinds);
     output_details(team_name_2, team_2_score, team_2_goals, team_2_behinds);
@@ -104,10 +108,35 @@ int main()
     write_line("");
     do
     {
-        int user_option = print_menu(team_name_1, team_name_2);
-    } while (user_option != 6);
+        user_option = print_menu(team_name_1, team_name_2);
+        switch (user_option)
+        {
+        case 1:
+            team_1_goals = read_integer("Goals: ");
+            break;
+        case 2:
+            team_1_behinds = read_integer("Behinds: ");
+            break;
+        case 3:
+            team_2_goals = read_integer("Goals: ");
+            break;
+        case 4:
+            team_2_behinds = read_integer("Behinds: ");
+            break;
+        case 5:
+            team_1_score = calculate_scores(team_1_goals, team_1_behinds);
+            team_2_score = calculate_scores(team_2_goals, team_2_behinds);
     
+            winner = calculate_winner(team_name_1, team_name_2, team_1_score, team_2_score);
+        
+            write_line("The " + winner + " is winning");
+            output_details(team_name_1, team_1_score, team_1_goals, team_1_behinds);
+            output_details(team_name_2, team_2_score, team_2_goals, team_2_behinds);
+            break;
+        default:
+            break;
+        }
 
-
-
+    } while (user_option != 6);
+    return 0;
 }
