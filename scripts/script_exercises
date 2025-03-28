@@ -1,0 +1,6 @@
+#!/bin/bash
+
+currentyear=2024
+echo "What is your age"
+read age
+echo "You were born in: $((currentyear - age))"
