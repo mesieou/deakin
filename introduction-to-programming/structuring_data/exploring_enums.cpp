@@ -57,12 +57,11 @@ const int NUMBER_OF_DAYS = SUNDAY + 1;
 
 day read_day(string question)
 {
-    for ( int i; i < NUMBER_OF_DAYS; i++ )
+    for ( int i = 0; i < NUMBER_OF_DAYS; i++ )
     {
-        write_line(to_string(i) + ": "  + to_string(day(i)));
+        write_line(to_string(i + 1) + ": "  + to_string(day(i)));
     }
-    int option = read_integer(question);
-
+    int option = read_integer(question) - 1;
     return (day) option;
 
 }
