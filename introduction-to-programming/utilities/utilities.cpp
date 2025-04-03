@@ -14,7 +14,9 @@ string read_string(string prompt)
     return read_line();
 }
 
-int read_integer(string prompt, int from, int to)
+int read_integer(string prompt, 
+    int from = numeric_limits<int>::min(), 
+    int to = numeric_limits<int>::max())
 {
     string user_output = read_string(prompt);
     
@@ -32,7 +34,6 @@ int read_integer(string prompt, int from, int to)
 
         write_line( ss.str());
         user_output_int = convert_to_integer(read_string(prompt));
-    } 
-
+    }
     return user_output_int;
 }
