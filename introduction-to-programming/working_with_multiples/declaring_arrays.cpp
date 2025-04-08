@@ -25,6 +25,17 @@ string shortest_name(string arr[], int size) {
     return min;
  }
 
+bool contains(string arr[], int size) {
+    for (int i = 0; i < size; i++)
+    {
+        if (condition)
+        {
+            /* code */
+        }
+        
+    }
+    
+}
 
 
 int main()
