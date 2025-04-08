@@ -14,9 +14,7 @@ string read_string(string prompt)
     return read_line();
 }
 
-int read_integer(string prompt, 
-    int from = numeric_limits<int>::min(), 
-    int to = numeric_limits<int>::max())
+int read_integer(string prompt, int from, int to)  // No default arguments here
 {
     string user_output = read_string(prompt);
     
@@ -27,7 +25,7 @@ int read_integer(string prompt,
     }
 
     int user_output_int = convert_to_integer(user_output);
-    while (!(user_output_int > from and user_output_int < to))
+    while (!(user_output_int >= from and user_output_int <= to))
     {
         stringstream ss;
         ss << "Please enter a number from " << from << " to " << to;
