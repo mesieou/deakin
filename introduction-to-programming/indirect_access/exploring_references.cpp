@@ -44,7 +44,7 @@ int read_integer(string prompt,
     }
 
     int user_output_int = convert_to_integer(user_output);
-    while (!(user_output_int > from and user_output_int <= to))
+    while (!(user_output_int >= from and user_output_int <= to))
     {
         stringstream ss;
         ss << "Please enter a number from " << from << " to " << to;
@@ -104,7 +104,10 @@ void print_user( user_data user)
     write_line("Role: " + permission_to_string(user.permissions_level));
 }
 
-
+void update_user(user_data &user)
+{
+    user.username = "Juan";
+}
 
 int main()
 {
@@ -117,6 +120,9 @@ int main()
     };
 
   print_user(user);
+  update_user(user);
+  print_user(user);
+
 
   return 0;
 }
