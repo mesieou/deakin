@@ -44,7 +44,16 @@ void print(number_data data) {
     
 }
 //todo: add max here
+
 //todo: add sum here
+double sum_numbers(number_data &nums) {
+    double total = 0;
+    for (int i = 0; i < nums.size; i++)
+    {
+        total += nums.values[i];
+    }
+    return total;
+}
 //todo: add mean here
 
 int main() {
@@ -52,8 +61,8 @@ int main() {
     number_data data = {{}, 0};
 
     populate_array(data);
-
-    print(data);
+    int sum = sum_numbers(data);
+    write_line(sum);
 
     return 0;
 }
