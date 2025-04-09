@@ -36,6 +36,13 @@ void populate_array(number_data &data) {
     
 }
 //todo: add print here
+void print(number_data data) {
+    for (int i = 0; i < data.size; i++)
+    {
+        printf("%d: %lf\n", i, data.values[i]);
+    }
+    
+}
 //todo: add max here
 //todo: add sum here
 //todo: add mean here
@@ -45,6 +52,8 @@ int main() {
     number_data data = {{}, 0};
 
     populate_array(data);
+
+    print(data);
 
     return 0;
 }
