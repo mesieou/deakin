@@ -25,16 +25,15 @@ string shortest_name(string arr[], int size) {
     return min;
  }
 
-bool contains(string arr[], int size) {
+bool contains(string arr[], int size, string name) {
     for (int i = 0; i < size; i++)
     {
-        if (condition)
+        if (to_lowercase(arr[i]) == to_lowercase(name))
         {
-            /* code */
+            return true;
         }
-        
     }
-    
+    return false;
 }
 
 
@@ -47,5 +46,9 @@ int main()
     int total_length_names = total_length(my_first_array, SIZE);
     string name = shortest_name(my_first_array, SIZE);
     write_line(name);
+    
+    bool david_in_arr = contains(my_first_array, SIZE, "davidd");
+    write_line(david_in_arr);
+
 
 }
