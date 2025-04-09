@@ -23,9 +23,9 @@ typedef struct
 
 
 //create a search function
-int search(store_data store) {
+int search(store_data &store, string term) {
     // ask user for the search term
-    string search_term = to_lowercase(read_string("Product to search:"));
+    string search_term = to_lowercase(term);
     
     // track the indexes of matched produts 
     strings_list matched_indexes = {{},0};
@@ -56,8 +56,40 @@ int search(store_data store) {
         // return the number 
         return option - 1;
     }
-    
+}
 
+// adds a new product and adds it to the store
+void add_product(store_data &store) {
+    string name =read_string("Enter the name of the name of the product");
+    int product_index = search(store, name);
+    
+    // check if the product already exists
+    if (product_index == -1)
+    {
+        double cost = read_double("Enter the cost:");
+        double price = read_double("Enter the sale price:");
+        double profit = price - cost;
+        //creates the new product
+        product new_product = {name, cost, price,1};
+        //adds the product to the store
+        store.products[store.products_number] = new_product;
+        //adds the profit to the store
+        write_line("Product added!");
+    } else
+    {
+        write_line("The following product already exists:");
+        write_line("- " + store.products[product_index].name);
+        string ans = read_string("Do you want to add one? [yes / no]: ");
+        // checks if the customer wants to increase the quantity of the existed product
+        if ( to_lowercase(ans) == "yes")
+        {
+            double profit = price - cost;
+             
+            store.products[product_index].quantity++;
+            write_line("Done!");
+        }
+        write_line("Bye bye then!");
+    }
 }
 
 int main() {
