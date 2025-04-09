@@ -13,4 +13,9 @@ string read_string(string prompt);
 int read_integer(string prompt, 
                  int from = numeric_limits<int>::min(), 
                  int to = numeric_limits<int>::max());
+
+double read_double(string prompt, 
+                 double from = numeric_limits<int>::min(), 
+                 double to = numeric_limits<int>::max());
+
 #endif

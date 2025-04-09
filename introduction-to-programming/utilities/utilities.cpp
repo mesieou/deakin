@@ -35,3 +35,24 @@ int read_integer(string prompt, int from, int to)  // No default arguments here
     }
     return user_output_int;
 }
+
+double read_double(string prompt, double from, double to)
+{
+    string user_output = read_string(prompt);
+    
+    while(!is_double(user_output))
+    {
+        write_line("Please enter a valid decimal number");
+        user_output = read_string(prompt);
+    }
+
+    double user_output_double = convert_to_double(user_output);
+    while (!(user_output_double >= from && user_output_double <= to))
+    {
+        stringstream ss;
+        ss << "Please enter a number from " << from << " to " << to;
+        write_line(ss.str());
+        user_output_double = convert_to_double(read_string(prompt));
+    }
+    return user_output_double;
+}
