@@ -31,7 +31,7 @@ double read_double(string prompt,
 
 void print_list(list_data data);
 
-void push(list_data &data);
+void push_int(list_data &data, int num);
 
 void remove(list_data &data);
 

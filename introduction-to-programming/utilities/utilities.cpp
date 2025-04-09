@@ -17,8 +17,7 @@ void print_list(list_data data)
 }
 
 // adds more numbers to the number data array
-void push(list_data &data) {
-    int num = read_integer("Enter the number to add");
+void push_int(list_data &data, int num) {
     // Ensures we do not pass the max size of the array
     if (data.size >= MAX_LIST)
     {
