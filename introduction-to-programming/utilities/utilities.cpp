@@ -8,15 +8,6 @@ using std::to_string;
 using namespace std;
 using std::string;
 
-const int MAX_LIST = 100;
-
-// Define the struct with an array and its size
-struct list_data
-{
-    double values[MAX_LIST];
-    int size;
-};
-
 void print_list(list_data data)
 {
     for (int i = 0; i < data.size; i++)
