@@ -17,12 +17,13 @@ typedef struct
 {
     product products[MAX_PRODUCTS];
     int type_products_quantity;
-    int sales;
+    double sales;
     double profit;
 } store_data;
 
 void print_list_products(store_data data)
 {
+    write_line("");
     printf("List of Products:\n");
     for (int i = 0; i < data.type_products_quantity; i++)
     {
@@ -121,8 +122,8 @@ void print_menu()
     printf("3. Update a product\n");
     printf("4. Sell a product\n");
     printf("5. List all my products\n");
-    printf("6. Quit\n");
-    
+    printf("6. Sales and profits report\n");
+    printf("7. Quit\n"); 
 }
 
 // asks the customer and deletes a product of the store
@@ -243,6 +244,33 @@ void sell(store_data &store) {
     store.profit += profit;
 }
 
+void statistics(store_data &store) {
+    
+    double total_stock_value = 0;
+    int low_stock_products = 0;
+
+    // loops through all the products in the store
+    for (int i = 0; i < store.type_products_quantity; i++)
+    {
+        //calculates and adds the value of each product
+        total_stock_value += store.products[i].quantity * store.products[i].cost;
+        
+        //check which products have low stock
+        if (store.products[i].quantity < 10)
+        {
+            low_stock_products++;
+        }
+    }
+
+    //display all the statistics
+    write_line("----------------");
+    printf("Total sales: %.2f\n", store.sales);
+    printf("Total profit: %.2f\n", store.profit);
+    printf("Number of products: %d\n", store.type_products_quantity);
+    printf("Total value of stock: %.2f\n", total_stock_value);
+    printf("Number of products with less than 10 items: %d\n", low_stock_products);
+}
+
 int main() {
     // asks customer the initial state of the store
     store_data store = initialise_the_store();
@@ -252,10 +280,10 @@ int main() {
     
     int option;
     do
-    {
-        
+    { 
         print_menu();
         option = read_integer("Enter a number:");
+
         switch (option)
         {
             case 1:
@@ -263,7 +291,6 @@ int main() {
             add_product(store);
             //shows the user with the list of products in the store.
             print_list_products(store);
-            
             break;
             case 2:
             //removes the product from the store
@@ -272,23 +299,30 @@ int main() {
             print_list_products(store);
             break;
         case 3:
+            //removes a product from the store
             edit(store);
             print_list_products(store);
             break;
         case 4:
+            //sells a product from the store
             sell(store);
             break;
         case 5:
+            //display all the products of the store
             print_list_products(store);
             break;
         case 6:
+            //display sales, profits and more statistics from the store
+            statistics(store);
+            break;
+        case 7:
+            //exits the program
             printf("bye bye");
             break;
         default:
             write_line("Unknown ooption, please enter a number from 1 to 5.");
             break;
         }
-    } while (option != 6);
-
+    } while (option != 7);
     return 0;
 }

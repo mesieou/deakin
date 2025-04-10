@@ -18,12 +18,6 @@ struct doubles_list
     int size;
 };
 
-struct strings_list
-{
-    string values[MAX_LIST];
-    int size;
-};
-
 struct ints_list
 {
     int values[MAX_LIST];
@@ -41,25 +35,8 @@ double read_double(string prompt,
                    double from = numeric_limits<double>::min(), 
                    double to = numeric_limits<double>::max());
 
-// Doubles list functions
-void push_double(doubles_list &data, double num);
-void remove_double(doubles_list &data);
-void print_list_double(doubles_list data);
+// sum a list of integers and doubles
 double sum_double(doubles_list &data);
-double mean_double(doubles_list &data);
-double max_double(doubles_list &data);
-
-// Strings list functions
-void push_string(strings_list &data, string str);
-void remove_string(strings_list &data);
-void print_list_string(strings_list data);
-
-// Ints list functions
-void push_int(ints_list &data, int numb);
-void remove_int(ints_list &data);
-void print_list_int(ints_list data);
 double sum_int(ints_list &data);
-double mean_int(ints_list &data);
-double max_int(ints_list &data);
 
 #endif
