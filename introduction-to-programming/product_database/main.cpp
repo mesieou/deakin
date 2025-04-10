@@ -138,6 +138,30 @@ void remove(store_data &store)
     store.type_products_quantity--;
 }
 
+// asks the customer and updates a product of the store
+void edit(store_data &store) 
+{
+    string name =read_string("Edit product name: ");
+    
+    // searches all the products in stock and ask the user to select one
+    int index = search(store, name);
+    
+    if (index == -1)
+    {
+        write_line("Product not found. Can't edit.");
+        return;
+    }
+    // Edit the item
+    string new_name = read_string("New Name: ");
+    double cost = read_double("New Cost: ");
+    double price = read_double("New Sale Price: ");
+    int quantity = read_integer("New Quantity: ");
+    write_line(store.products[index].name);  
+    store.products[index] = {new_name, cost, price, quantity};
+
+    write_line("Product updated successfully!");
+}
+
 //todo: add populate_array here
 store_data initialise_the_store() {
     write_line("Creating your store...");
@@ -207,9 +231,10 @@ int main() {
             //shows the user with the list of products in the store.
             print_list_products(store);
             break;
-        // case 3:
-        //     print(data);
-        //     break;
+        case 3:
+            edit(store);
+            print_list_products(store);
+            break;
         // case 4:
         //     calculate_stats(data);
         //     break;
