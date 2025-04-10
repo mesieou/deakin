@@ -2,23 +2,29 @@
 #define UTILITIES_H
 
 #include <string>
-#include <sstream>  // For stringstream
 #include <limits>
+#include <sstream>
 
-using std::to_string;
-using namespace std;
 using std::string;
+using std::numeric_limits;
+using std::to_string;
 
 const int MAX_LIST = 100;
 
-// Struct to hold list data
-struct list_data
+// Structs for holding different data types
+struct doubles_list
 {
     double values[MAX_LIST];
     int size;
 };
 
-// Function declarations
+struct ints_list
+{
+    int values[MAX_LIST];
+    int size;
+};
+
+// User input functions
 string read_string(string prompt);
 
 int read_integer(string prompt, 
@@ -26,19 +32,11 @@ int read_integer(string prompt,
                  int to = numeric_limits<int>::max());
 
 double read_double(string prompt, 
-                   double from = numeric_limits<int>::min(), 
-                   double to = numeric_limits<int>::max());
+                   double from = numeric_limits<double>::min(), 
+                   double to = numeric_limits<double>::max());
 
-void print_list(list_data data);
-
-void push_int(list_data &data, int num);
-
-void remove(list_data &data);
-
-double max(list_data data);
-
-double sum(list_data &data);
-
-double mean(list_data &data);
+// sum a list of integers and doubles
+double sum_double(doubles_list &data);
+double sum_int(ints_list &data);
 
 #endif
