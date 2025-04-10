@@ -13,7 +13,7 @@ void print_list_int(ints_list data)
 {
     for (int i = 0; i < data.size; i++)
     {
-        printf("%d: %d\n", i + 1, (int)data.values[i]);
+        printf("%d: %d\n", i, (int)data.values[i]);
     }
 }
 
@@ -21,7 +21,7 @@ void print_list_double(doubles_list data)
 {
     for (int i = 0; i < data.size; i++)
     {
-        printf("%d: %.2f\n", i + 1, data.values[i]);
+        printf("%d: %.2f\n", i, data.values[i]);
     }
 }
 
@@ -29,7 +29,7 @@ void print_list_string(strings_list data)
 {
     for (int i = 0; i < data.size; i++)
     {
-        printf("%d: %s\n", i + 1, data.values[i].c_str());
+        printf("%d: %s\n", i, data.values[i].c_str());
     }
 }
 

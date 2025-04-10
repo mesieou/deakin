@@ -21,37 +21,58 @@ typedef struct
     double profit;
 } store_data;
 
+void print_list_products(store_data data)
+{
+    printf("List of Products:\n");
+    for (int i = 0; i < data.type_products_quantity; i++)
+    {
+        printf("%d: %s\n", i + 1, data.products[i].name.c_str());
+    }
+}
+
+void print_matched_products(int matched_indexes[], int matches, store_data store)
+{
+    for (int i = 0; i < matches; i++) {
+        int actual_index = matched_indexes[i];
+        printf("%d: %s (Qty: %d)\n", actual_index + 1, store.products[actual_index].name.c_str(), store.products[actual_index].quantity);
+    }
+}
 
 //create a search function
 int search(store_data &store, string term) {
+    printf("Searching product...\n");
     // ask user for the search term
     string search_term = to_lowercase(term);
     
     // track the indexes of matched produts 
-    strings_list matched_indexes = {{},0};
+    int matched_indexes[MAX_PRODUCTS];
+    int matches = 0;
 
     // look through all the products array
     for (int i = 0; i < store.type_products_quantity; i++)
     {
-        
         // check if any products contains the search term
         if (to_lowercase(store.products[i].name).find(search_term) != string::npos)
         {
             //add the index matched to the list
-            push_string(matched_indexes, store.products[i].name);
+            matched_indexes[matches] = i;
+            matches++;
         }
         
     }
-    if (matched_indexes.size == 0)
+    if (matches == 0)
     {
-        printf("No products found with that description");
+        printf("No products found with that description\n");
         return -1;
     } else
     {
+        write_line("Found these products already in your stock:");
+
         // display the list with the tracked products
-        print_list_string(matched_indexes);
+        print_matched_products(matched_indexes, matches, store);
+
         // asks the user to choose a number from the list
-        int option = read_integer("Enter the number of the product you want to choose: ");
+        int option = read_integer("Which one?: ", 1, store.type_products_quantity);
         
         // return the number 
         return option - 1;
@@ -60,38 +81,34 @@ int search(store_data &store, string term) {
 
 // adds a new product and adds it to the store
 void add_product(store_data &store) {
-    string name =read_string("Enter the name of the name of the product");
+    string name =read_string("New product name: ");
     int product_index = search(store, name);
     
-    // check if the product already exists
-    if (product_index != -1)
+    
+    // check if the product already exists or exceeds the capacity
+    if (product_index == -1 && store.type_products_quantity < MAX_PRODUCTS)
     {
+        write_line("");
         double cost = read_double("Enter the cost:");
         double price = read_double("Enter the sale price:");
         int quantity = read_integer("Quantity:");
+        write_line("");
         
         //creates the new product
         product new_product = {name, cost, price,quantity};
         //adds the product to the store
         store.products[store.type_products_quantity] = new_product;
+        
+        store.type_products_quantity++;
         write_line("Product added!");
+        write_line("");
     } else
     {
-        write_line("The following product already exists:");
-        write_line("- " + store.products[product_index].name);
-        string ans = read_string("Do you want to add more to the stock? [yes / no]: ");
+        int quantity = read_integer("How many more to add:");
         
-        // checks if the customer wants to increase the quantity of the existed product
-        if ( to_lowercase(ans) == "yes")
-        {
-            int quantity = read_integer("Quantity:");
-            
-            //adds more products of the same category
-            store.products[product_index].quantity += quantity;
-            
-            write_line("Done!");
-        }
-        write_line("Bye bye then!");
+        //adds more products of the same category
+        store.products[product_index].quantity += quantity;
+        write_line("Done!");
     }
 }
 
@@ -102,8 +119,23 @@ void print_menu()
     printf("2. Delete a product\n");
     printf("3. Update a product\n");
     printf("4. Sell a product\n");
-    printf("5. Quit\n");
+    printf("5. List all my products\n");
+    printf("6. Quit\n");
     
+}
+
+// asks the customer and deletes a product of the store
+void remove(store_data &store) 
+{
+    string name =read_string("New product name: ");
+    // searches all the products in stock and ask the user to select one
+    int index = search(store, name);
+
+    //deletes the item
+    store.products[index] = store.products[store.type_products_quantity - 1];
+
+    //reduces the number of products in the store
+    store.type_products_quantity--;
 }
 
 //todo: add populate_array here
@@ -151,6 +183,9 @@ int main() {
     // asks customer the initial state of the store
     store_data store = initialise_the_store();
     
+    //shows the user with the list of products in the store.
+    print_list_products(store);
+    
     int option;
     do
     {
@@ -159,12 +194,19 @@ int main() {
         option = read_integer("Enter a number:");
         switch (option)
         {
-        case 1:
+            case 1:
+            //adds the product to the store
             add_product(store);
+            //shows the user with the list of products in the store.
+            print_list_products(store);
+            
             break;
-        // case 2:
-        //     remove_at_index(data);
-        //     break;
+            case 2:
+            //removes the product from the store
+            remove(store);
+            //shows the user with the list of products in the store.
+            print_list_products(store);
+            break;
         // case 3:
         //     print(data);
         //     break;
@@ -172,13 +214,16 @@ int main() {
         //     calculate_stats(data);
         //     break;
         case 5:
+            print_list_products(store);
+            break;
+        case 6:
             printf("bye bye");
             break;
         default:
             write_line("Unknown ooption, please enter a number from 1 to 5.");
             break;
         }
-    } while (option != 5);
+    } while (option != 6);
 
     return 0;
 }
