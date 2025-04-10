@@ -26,7 +26,8 @@ void print_list_products(store_data data)
     printf("List of Products:\n");
     for (int i = 0; i < data.type_products_quantity; i++)
     {
-        printf("%d: %s\n", i + 1, data.products[i].name.c_str());
+        printf("%d: %s (Qty: %d)\n", i + 1, data.products[i].name.c_str(), data.products[i].quantity);
+
     }
 }
 
@@ -193,14 +194,53 @@ store_data initialise_the_store() {
         double cost = read_double("Cost:");
         double price = read_double("Sale Price:");
         int quantity = read_integer("Quantity:");
-
+        
         //create the product
         product item = {name, cost, price, quantity};
-
+        
         //save the product in the store
         store.products[i] = item;
     }
     return store;
+}
+
+void sell(store_data &store) {
+    string name =read_string("Product name: ");
+    
+    // searches all the products in stock and ask the user to select one
+    int index = search(store, name);
+    
+    // checks if no product was found
+    if (index == -1) {
+        write_line("Product not found. Can't complete sale.");
+        return;
+    }
+    
+    // gets the quantity sold by the user
+    int quantity = read_integer("Sold quantity:");
+
+    if (store.products[index].quantity < quantity)
+    {
+        printf("Sorry not enough items of %s to sell\n", store.products[index].name.c_str());
+        return;
+    } else if (store.products[index].quantity == quantity)
+    {
+       printf("Produt %s just had enough quantity. All sold!, you might want to order more!\n", store.products[index].name.c_str());
+    }
+    
+    //updated the stock of the store
+    store.products[index].quantity -= quantity;
+
+    // calculates sales
+    double sales = store.products[index].price * quantity;
+    double cost = store.products[index].cost * quantity;
+
+    //calculate profit
+    double profit = sales - cost;
+
+    //update the sales and profits
+    store.sales += sales;
+    store.profit += profit;
 }
 
 int main() {
@@ -235,9 +275,9 @@ int main() {
             edit(store);
             print_list_products(store);
             break;
-        // case 4:
-        //     calculate_stats(data);
-        //     break;
+        case 4:
+            sell(store);
+            break;
         case 5:
             print_list_products(store);
             break;
