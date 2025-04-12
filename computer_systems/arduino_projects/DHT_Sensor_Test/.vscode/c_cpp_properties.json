@@ -1,0 +1,60 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/include",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/src",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/.pio/libdeps/uno/DHT sensor library",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/.pio/libdeps/uno/Adafruit Unified Sensor",
+                "/Users/juanbernal/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "/Users/juanbernal/.platformio/packages/framework-arduino-avr/variants/standard",
+                "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/include",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/src",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/.pio/libdeps/uno/DHT sensor library",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/DHT_Sensor_Test/.pio/libdeps/uno/Adafruit Unified Sensor",
+                    "/Users/juanbernal/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "/Users/juanbernal/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60118",
+                "ARDUINO_AVR_UNO",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega328P__",
+                ""
+            ],
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "/Users/juanbernal/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega328p",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
