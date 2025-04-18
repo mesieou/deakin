@@ -10,15 +10,13 @@ unsigned int microsecond = 1000000;
 const int MAX_SERVICES = 100;
 const int MAX_BOOKINGS = 100;
 
-
-
 // Service object that holds the information of a service
 typedef struct 
 {
     string name;
     double price;
     int quantity;
-} service;
+} service;git 
 
 // Business object that holds the information of all services
 typedef struct
@@ -64,11 +62,13 @@ typedef struct
     booking booking[MAX_BOOKINGS];
 } customer;
 
+//formats the start of something new
 void new_text_formatted(string text) {
     write_line("-------------");
     write_line(text);
 }
 
+//simulates loading
 void loading() {
     using namespace std::this_thread; // sleep_for, sleep_until
     using namespace std::chrono;
@@ -85,7 +85,7 @@ void loading() {
 void create_dummy_data() {
     //create services
     new_text_formatted("Creating Services")
-
+    service
     //create 1 customer
     //create 1 driver
     //create 3 quotes
