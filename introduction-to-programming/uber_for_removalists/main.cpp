@@ -2,13 +2,20 @@
 #include "splashkit.h"
 
 //used for time delays
-#include<unistd.h>
-unsigned int microsecond = 1000000;
+#include <iostream>
+#include <chrono>
+#include <thread>
 
+//declares the models in advance as they need to be able to be linked with each other
+typedef struct booking booking;
+typedef struct customer customer;
 
 //sets the max number of services 
 const int MAX_SERVICES = 100;
 const int MAX_BOOKINGS = 100;
+
+// Enum for status
+enum status { not_accepted, accepted };
 
 // Service object that holds the information of a service
 typedef struct 
@@ -16,7 +23,7 @@ typedef struct
     string name;
     double price;
     int quantity;
-} service;git 
+} service;
 
 // Business object that holds the information of all services
 typedef struct
@@ -25,42 +32,43 @@ typedef struct
     int quantity;
 } business;
 
-
-// Booking object that holds all the booking information
+// driver object that hold all the driver information
 typedef struct 
 {
-    quote quote;
-    driver driver;
-    string date;
-    enum status {not_accepted, Accepted};
-} booking;
+    string name;
+    string email;
+    booking* booking[MAX_BOOKINGS];
+} driver;
+
+// Customer object that hold all the customer information
+struct customer 
+{
+    string name;
+    string email;
+    booking* booking[MAX_BOOKINGS];
+};
 
 // Quote object that holds all the quote information
 typedef struct 
 {
-    customer customer;
+    customer* customer;
     string pick_up;
     string drop_off;
-    service service;
+    service* service;
     double total_price;
-    enum status {not_accepted, Accepted};
+    status quote;
 } quote;
 
-// Create the Driver struct
-typedef struct 
+// Booking object that holds all the booking information
+struct booking 
 {
-    string name;
-    string email;
-    booking booking[MAX_BOOKINGS];
-} driver;
+    quote* quote;
+    driver* driver;
+    string date;
+    enum status {not_accepted, Accepted};
+};
 
-// Customer object that hold all the customer information
-typedef struct 
-{
-    string name;
-    string email;
-    booking booking[MAX_BOOKINGS];
-} customer;
+
 
 //formats the start of something new
 void new_text_formatted(string text) {
@@ -69,29 +77,73 @@ void new_text_formatted(string text) {
 }
 
 //simulates loading
-void loading() {
-    using namespace std::this_thread; // sleep_for, sleep_until
-    using namespace std::chrono;
-    printf("loading");
+#include "splashkit.h"
 
-    for (int i = 0; i < 5; i++)
-    {
-        printf(".");
-        usleep(0.3 * microsecond);
+void loading()
+{
+    string text = "Loading";
+
+    // Print "loading" letter by letter
+    for (int i = 0; i < text.length(); i++) {
+        write(text[i]);  // Print each character
+        delay(100);  // Delay between each letter
+    }
+
+    // Print dots after "loading" is done
+    for (int i = 0; i < 5; i++) {
+        delay(100);  // Delay between each dot
+        write(".");  // Print one dot at a time
     }
     
+    write_line("");  // Move to the next line after the loading is complete
 }
+
+
 //Create dummy data to test the functions and the program
 void create_dummy_data() {
-    //create services
-    new_text_formatted("Creating Services")
-    service
-    //create 1 customer
+    
+    //create a business with 3 services
+    new_text_formatted("Creating a business with 3 services");
+    business my_business = {
+        {
+            {"House Move", 100, 2},
+            {"Business Move", 150, 2},
+            {"Furniture Move", 75, 1}
+        },
+        3
+    };
+
+    write_line("Creating a customer");
+    
+    //create a customer
+    customer juan = { "Juan", "mesieou@gmail.com"};
+
     //create 1 driver
-    //create 3 quotes
+    driver alberto = { "Alberto", "alberto@hotmail.com" };
+    
+    //create 2 quotes
+    quote first_quote = {
+        &juan,
+        "44 Sprint St, Melbourne vic 3000",
+        "57 Aberdenn St, Fitzroy vic 3300",
+        &my_business.services[0],
+        450,
+        not_accepted
+    };
+
+    quote second_quote = {
+        &juan,
+        "44 Sprint St, Melbourne vic 3000",
+        "88 expenset St, Albert Park vic 3100",
+        &my_business.services[2],
+        300,
+        accepted
+    };
+
     //create 2 bookings
-      //assing the quotes
-      //assign the bookings to the customer and driver 
+    //assing the quotes
+    //assign the bookings to the customer and driver 
+    loading();
     
 }
 
@@ -133,7 +185,7 @@ void create_dummy_data() {
 
 int main() {
     // Initialise  dummy data
-    
+    create_dummy_data();
     // driver or customer logic
       //show custtomer_logic_manager
       //show driver_logic_manager
