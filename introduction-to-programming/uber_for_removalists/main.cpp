@@ -9,13 +9,15 @@
 //declares the models in advance as they need to be able to be linked with each other
 typedef struct booking booking;
 typedef struct customer customer;
+typedef struct quote quote;
+
 
 //sets the max number of services 
 const int MAX_SERVICES = 100;
 const int MAX_BOOKINGS = 100;
 
 // Enum for status
-enum status { not_accepted, accepted };
+enum status { not_accepted, accepted, completed };
 
 // Service object that holds the information of a service
 typedef struct 
@@ -37,6 +39,7 @@ typedef struct
 {
     string name;
     string email;
+    quote* quote[MAX_BOOKINGS];
     booking* booking[MAX_BOOKINGS];
 } driver;
 
@@ -45,27 +48,29 @@ struct customer
 {
     string name;
     string email;
+    quote* quote[MAX_BOOKINGS];
     booking* booking[MAX_BOOKINGS];
 };
 
 // Quote object that holds all the quote information
-typedef struct 
+struct quote
 {
     customer* customer;
     string pick_up;
     string drop_off;
     service* service;
     double total_price;
-    status quote;
-} quote;
+    status status;
+};
 
 // Booking object that holds all the booking information
 struct booking 
 {
     quote* quote;
     driver* driver;
+    customer* customer;
     string date;
-    enum status {not_accepted, Accepted};
+    status status;
 };
 
 
@@ -74,6 +79,12 @@ struct booking
 void new_text_formatted(string text) {
     write_line("-------------");
     write_line(text);
+}
+
+//formats the start of something new
+void end_text_formatted(string text) {
+    write_line(text);
+    write_line("");
 }
 
 //simulates loading
@@ -113,15 +124,25 @@ void create_dummy_data() {
         3
     };
 
-    write_line("Creating a customer");
-    
+    //simulates creating one by one
+    delay(100);
+
     //create a customer
+    write_line("Creating a customer");
     customer juan = { "Juan", "mesieou@gmail.com"};
 
+    //simulates creating one by one
+    delay(100);
+
     //create 1 driver
+    write_line("Creating a driver");
     driver alberto = { "Alberto", "alberto@hotmail.com" };
+
+    //simulates creating one by one
+    delay(100);
     
     //create 2 quotes
+    write_line("Creating 2 quotes");
     quote first_quote = {
         &juan,
         "44 Sprint St, Melbourne vic 3000",
@@ -130,7 +151,6 @@ void create_dummy_data() {
         450,
         not_accepted
     };
-
     quote second_quote = {
         &juan,
         "44 Sprint St, Melbourne vic 3000",
@@ -140,11 +160,48 @@ void create_dummy_data() {
         accepted
     };
 
+    //simulates creating one by one
+    delay(100);
+
     //create 2 bookings
-    //assing the quotes
-    //assign the bookings to the customer and driver 
-    loading();
+    write_line("Creating 2 bookings");
+    booking first_booking = {
+        &first_quote,
+        &alberto,
+        &juan,
+        "03/05/2025",
+        accepted
+    };
+    booking secong_booking = {
+        &second_quote,
+        &alberto,
+        &juan,
+        "06/12/2025",
+        accepted
+    };
+
+    //simulates creating one by one
+    delay(100);
+
+    //assign the quotes to the customer and driver 
+    write_line("Assigning the quotes to the customer and driver");
+    juan.quote[0] = &first_quote;
+    juan.quote[1] = &second_quote;
+    alberto.quote[0] = &first_quote;
+    alberto.quote[1] = &second_quote;
+
+    //simulates creating one by one
+    delay(100);
     
+    //assign the quotes to the customer and driver 
+    write_line("Assigning the bookings to the customer and driver");
+    juan.booking[0] = &first_booking;
+    juan.booking[1] = &secong_booking;
+    alberto.booking[0] = &first_booking;
+    alberto.booking[1] = &secong_booking;
+
+    loading();
+    end_text_formatted("All done!");
 }
 
 //Customer fuctions
@@ -183,10 +240,50 @@ void create_dummy_data() {
   //list_jobs
   //mark as completed
 
+//Asks the user whether they are a driver or a customer
+int read_interface(int option) {
+    //shows the initial menu
+    write_line("1 - Customer");
+    write_line("2 - Drive");
+    write_line("3 - Exit");
+
+    //gets the user option
+    option = read_integer("Select 1 or 3:");
+    return option;
+}
+
 int main() {
     // Initialise  dummy data
     create_dummy_data();
+
     // driver or customer logic
+    new_text_formatted("Welcome to Uber for Removalists");
+    int option;
+
+    do
+    {   
+        //Asks the user whether they are a driver or a customer
+        option = read_interface(option);
+
+        //Initial menu to choose customer or driver interface
+        switch (option)
+        {
+        case 1:
+            // customer_logic_manager;
+            break;
+        case 2:
+            // driver_logic_manager;
+            break;
+        case 3:
+            end_text_formatted("Bye Bye");
+            break;
+        default:
+
+            end_text_formatted("Not a valid entry. Please enter a number from 1 to 3.");
+            break;
+        }
+    } while (option !=3);
+    
       //show custtomer_logic_manager
       //show driver_logic_manager
     return 0;
