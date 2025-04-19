@@ -229,24 +229,23 @@ void create_dummy_data() {
   //display_quotes(not accepted)
   //display_jobs(not complete)
   
-  // Displays a menu
-  void display_menu(string options[], int count) {
-      //iterates through the options and display each option
-      for (int i = 0; i < count; i++)
-      {
-          write_line( to_string(i + 1) + " - " + options[i]);
-      }   
-  }
+// Displays a menu
+void display_menu(string options[], int count) {
+    //iterates through the options and display each option
+    for (int i = 0; i < count; i++)
+    {
+        write_line( to_string(i + 1) + " - " + options[i]);
+    }   
+}
+
 // Customer logic manager 
-void customer_logic_manager() {
+void logic_manager(string options[], int options_length) {
     int option;
-    int options_length = 4;
 
     //Greets the customer with a line
     new_text_formatted("Welcome back!");
 
     //shows the initial menu
-    string options[] = {"Get a quote", "Book a service", "See my bookings", "Exit"};
     display_menu(options, options_length);
     
     //Asks the customer what they want to do
@@ -278,17 +277,6 @@ void customer_logic_manager() {
     } while (option !=4);
 }
 
-  //logic to act
-    //get a quote
-    //book a service
-    //See my bookings
-
-// Driver logic manager
-  //check_requests
-  //list_jobs
-  //mark as completed
-
-
 //Asks the user whether they are a driver or a customer
 int read_interface(int option) {
     int options_length = 3;
@@ -311,24 +299,38 @@ int main() {
     
     do
     {   
+        //number of options in the general menu
+        int options_length = 3;
+        
+        //initialise the customer menu options in an array
+        int customer_options_length = 4;
+        
+        //initialise the driver menu options in an array
+        int driver_options_length = 4;
+        
+        //initialse the driver and customer arrays that holds the options of the menu
+        string customer_options[] = {"Get a quote", "Book a service", "See all my bookings", "Exit"};
+        string driver_options[] = {"Check Requests", "Mark jobs as completed", "See all my jobs", "Exit"};
+
         // driver or customer logic
         new_text_formatted("Welcome to Uber for Removalists");
         
         //Asks the user whether they are a driver or a customer
-        option = read_interface(option);
+        option = read_interface(options_length);
 
         //Redirects to the correct interface based on the user selection
         switch (option)
         {
         case 1:
             //show custtomer_logic_manager
-            customer_logic_manager();
+            logic_manager(customer_options, customer_options_length);
             break;
         case 2:
             //show driver_logic_manager
-            // driver_logic_manager;
+            logic_manager(driver_options, driver_options_length);
             break;
         case 3:
+            //exit the menu
             end_text_formatted("Bye Bye");
             break;
         default:
