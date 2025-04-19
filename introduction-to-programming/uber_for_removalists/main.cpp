@@ -77,7 +77,7 @@ struct booking
 
 //formats the start of something new
 void new_text_formatted(string text) {
-    write_line("-------------");
+    write_line("-----------------------------------------------");
     write_line(text);
 }
 
@@ -228,20 +228,29 @@ void create_dummy_data() {
   //show_job(accepted)
   //display_quotes(not accepted)
   //display_jobs(not complete)
-
+  
+  // Displays a menu
+  void display_menu(string options[], int count) {
+      //iterates through the options and display each option
+      for (int i = 0; i < count; i++)
+      {
+          write_line( to_string(i + 1) + " - " + options[i]);
+      }   
+  }
 // Customer logic manager 
 void customer_logic_manager() {
     int option;
-    new_text_formatted("Welcome back!");
-    
-    //shows the initial menu
-    write_line("1 - Get a quote");
-    write_line("2 - Book a service");
-    write_line("3 - See my bookings");
-    write_line("4 - exit");
+    int options_length = 4;
 
+    //Greets the customer with a line
+    new_text_formatted("Welcome back!");
+
+    //shows the initial menu
+    string options[] = {"Get a quote", "Book a service", "See my bookings", "Exit"};
+    display_menu(options, options_length);
+    
     //Asks the customer what they want to do
-    option = read_integer("Select 1 or 4:");
+    option = read_integer("Select 1 to " + to_string(options_length) + ":", 1, options_length);
 
     //Redirects to the correct function based on the user selection
     do
@@ -279,15 +288,18 @@ void customer_logic_manager() {
   //list_jobs
   //mark as completed
 
+
 //Asks the user whether they are a driver or a customer
 int read_interface(int option) {
-    //shows the initial menu
-    write_line("1 - Customer");
-    write_line("2 - Drive");
-    write_line("3 - Exit");
+    int options_length = 3;
+    //initialises the array of options
+    string options[] = {"Customer", "Driver", "Exit"};
+    
+    //shows the initial menu to the user
+    display_menu(options, options_length);
 
     //gets the user option
-    option = read_integer("Select 1 or 3:");
+    option = read_integer("Select 1 to " + to_string(options_length) + ":", 1 , options_length);
     return option;
 }
 
@@ -295,12 +307,13 @@ int main() {
     // Initialise  dummy data
     create_dummy_data();
 
-    // driver or customer logic
-    new_text_formatted("Welcome to Uber for Removalists");
     int option;
-
+    
     do
     {   
+        // driver or customer logic
+        new_text_formatted("Welcome to Uber for Removalists");
+        
         //Asks the user whether they are a driver or a customer
         option = read_interface(option);
 
