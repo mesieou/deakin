@@ -230,6 +230,45 @@ void create_dummy_data() {
   //display_jobs(not complete)
 
 // Customer logic manager 
+void customer_logic_manager() {
+    int option;
+    new_text_formatted("Welcome back!");
+    
+    //shows the initial menu
+    write_line("1 - Get a quote");
+    write_line("2 - Book a service");
+    write_line("3 - See my bookings");
+    write_line("4 - exit");
+
+    //Asks the customer what they want to do
+    option = read_integer("Select 1 or 4:");
+
+    //Redirects to the correct function based on the user selection
+    do
+    {   
+        //Redirects to the correct interface based on the user selection
+        switch (option)
+        {
+        case 1:
+            //Gets a quote from the user
+            break;
+        case 2:
+            //Books a service
+            break;
+        case 3:
+            //Show all the bookings
+            break;
+        case 4:
+            //exits and displays a message to the user
+            end_text_formatted("Bye Bye");
+            break;
+        default:
+            end_text_formatted("Not a valid entry. Please enter a number from 1 to 3.");
+            break;
+        }
+    } while (option !=4);
+}
+
   //logic to act
     //get a quote
     //book a service
@@ -265,13 +304,15 @@ int main() {
         //Asks the user whether they are a driver or a customer
         option = read_interface(option);
 
-        //Initial menu to choose customer or driver interface
+        //Redirects to the correct interface based on the user selection
         switch (option)
         {
         case 1:
-            // customer_logic_manager;
+            //show custtomer_logic_manager
+            customer_logic_manager();
             break;
         case 2:
+            //show driver_logic_manager
             // driver_logic_manager;
             break;
         case 3:
@@ -284,7 +325,5 @@ int main() {
         }
     } while (option !=3);
     
-      //show custtomer_logic_manager
-      //show driver_logic_manager
     return 0;
 }
