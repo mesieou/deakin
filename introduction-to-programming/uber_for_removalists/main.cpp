@@ -6,41 +6,73 @@
 #include <chrono>
 #include <thread>
 
-//declares the models in advance as they need to be able to be linked with each other
-typedef struct booking booking;
-typedef struct customer customer;
-typedef struct quote quote;
-typedef struct driver driver;
-
-//sets the max number of services 
+// Constants
 const int MAX_SERVICES = 100;
 const int MAX_BOOKINGS = 100;
 const int MAX_QUOTES = 100;
 const int MAX_DRIVERS = 10;
 const int MAX_CUSTOMERS = 100;
-
-//sets the travel cost per minute to calculate quotes
 const double TRAVEL_COST_PER_MINUTE = 2.33;
 
-// Enum for status
+// Enum
 enum status { not_accepted, accepted, completed };
 
-// Service object that holds the information of a service
-typedef struct 
-{
+// Service
+struct service {
     string name;
     double price;
     int quantity;
-} service;
+};
 
-// Business object that holds the information of all services
-struct business
-{
+struct ServiceWithIndex {
+    service selected_service;
+    int index;
+};
+
+// Quote
+struct quote {
+    int customer_id; // index in business.customers
+    string pick_up;
+    string drop_off;
+    int service_index; // index in business.services
+    int total_price;
+    status status;
+};
+
+// Booking
+struct booking {
+    int quote_index;   // index in business.quotes
+    int driver_id;     // index in business.drivers
+    int customer_id;   // index in business.customers
+    string date;
+    status status;
+};
+
+// Driver
+struct driver {
+    string name;
+    string email;
+    int booking_indexes[MAX_BOOKINGS]; // indexes in business.bookings
+    int booking_count = 0;
+};
+
+// Customer
+struct customer {
+    string name;
+    string email;
+    int quote_indexes[MAX_QUOTES];    // indexes in business.quotes
+    int booking_indexes[MAX_BOOKINGS]; // indexes in business.bookings
+    int quote_count = 0;
+    int booking_count = 0;
+};
+
+// Business
+struct business {
     service services[MAX_SERVICES];
-    driver* drivers[MAX_DRIVERS];
-    customer* customers[MAX_CUSTOMERS];
-    booking* bookings[MAX_BOOKINGS];
-    quote* quotes[MAX_QUOTES];
+    driver drivers[MAX_DRIVERS];
+    customer customers[MAX_CUSTOMERS];
+    booking bookings[MAX_BOOKINGS];
+    quote quotes[MAX_QUOTES];
     int number_of_services = 0;
     int quote_count = 0;
     int booking_count = 0;
@@ -48,48 +80,7 @@ struct business
     int customer_count = 0;
 };
 
-// driver object that hold all the driver information
-struct driver 
-{
-    string name;
-    string email;
-    quote* quotes[MAX_BOOKINGS];
-    booking* bookings[MAX_BOOKINGS];
-    int quote_count = 0;
-    int booking_count = 0;
-} ;
 
-// Customer object that hold all the customer information
-struct customer 
-{
-    string name;
-    string email;
-    quote* quotes[MAX_BOOKINGS];
-    booking* bookings[MAX_BOOKINGS];
-    int quote_count = 0;
-    int booking_count = 0;
-};
-
-// Quote object that holds all the quote information
-struct quote
-{
-    customer* customer;
-    string pick_up;
-    string drop_off;
-    service* service;
-    int total_price;
-    status status;
-};
-
-// Booking object that holds all the booking information
-struct booking 
-{
-    quote* quote;
-    driver* driver;
-    customer* customer;
-    string date;
-    status status;
-};
 
 //formats the start of something new
 void new_text_formatted(string text) {
@@ -125,8 +116,7 @@ void loading()
 
 //Create dummy data to test the functions and the program
 business create_dummy_data() {
-    
-    //create a business with 3 services
+    // Create a business with 3 services
     new_text_formatted("Creating a business with 3 services");
     business my_business = {
         {
@@ -135,112 +125,102 @@ business create_dummy_data() {
             {"Furniture Move", 75, 3}
         }
     };
-
-    //updates the number of services in the business
     my_business.number_of_services = 3;
 
-    //simulates creating one by one
     delay(100);
 
-    //create a customer
+    // Create a customer
     write_line("Creating a customer");
-    customer juan = { "Juan", "mesieou@gmail.com"};
+    customer juan = { "Juan", "mesieou@gmail.com" };
+    int customer_index = my_business.customer_count;
+    my_business.customers[customer_index] = juan;
+    my_business.customer_count++;
 
-    //simulates creating one by one
     delay(100);
 
-    //create 1 driver
+    // Create a driver
     write_line("Creating a driver");
     driver alberto = { "Alberto", "alberto@hotmail.com" };
+    int driver_index = my_business.driver_count;
+    my_business.drivers[driver_index] = alberto;
+    my_business.driver_count++;
 
-    //simulates creating one by one
     delay(100);
-    
-    //create 2 quotes
+
+    // Create 2 quotes
     write_line("Creating 2 quotes");
+
     quote first_quote = {
-        &juan,
+        customer_index,
         "44 Sprint St, Melbourne vic 3000",
         "57 Aberdenn St, Fitzroy vic 3300",
-        &my_business.services[0],
+        0, // service index
         450,
         not_accepted
     };
+
     quote second_quote = {
-        &juan,
+        customer_index,
         "44 Sprint St, Melbourne vic 3000",
         "88 expenset St, Albert Park vic 3100",
-        &my_business.services[2],
+        2, // service index
         300,
         accepted
     };
 
-    //simulates creating one by one
+    int first_quote_index = my_business.quote_count++;
+    int second_quote_index = my_business.quote_count++;
+    my_business.quotes[first_quote_index] = first_quote;
+    my_business.quotes[second_quote_index] = second_quote;
+
+    // Update customer with quote indexes
+    my_business.customers[customer_index].quote_indexes[0] = first_quote_index;
+    my_business.customers[customer_index].quote_indexes[1] = second_quote_index;
+    my_business.customers[customer_index].quote_count = 2;
+
     delay(100);
 
-    //create 2 bookings
+    // Create 2 bookings
     write_line("Creating 2 bookings");
+
     booking first_booking = {
-        &first_quote,
-        &alberto,
-        &juan,
+        first_quote_index,
+        driver_index,
+        customer_index,
         "03/05/2025",
         accepted
     };
-    booking secong_booking = {
-        &second_quote,
-        &alberto,
-        &juan,
+
+    booking second_booking = {
+        second_quote_index,
+        driver_index,
+        customer_index,
         "06/12/2025",
         accepted
     };
 
-    //simulates creating one by one
+    int first_booking_index = my_business.booking_count++;
+    int second_booking_index = my_business.booking_count++;
+    my_business.bookings[first_booking_index] = first_booking;
+    my_business.bookings[second_booking_index] = second_booking;
+
+    // Update customer and driver with booking indexes
+    my_business.customers[customer_index].booking_indexes[0] = first_booking_index;
+    my_business.customers[customer_index].booking_indexes[1] = second_booking_index;
+    my_business.customers[customer_index].booking_count = 2;
+
+    my_business.drivers[driver_index].booking_indexes[0] = first_booking_index;
+    my_business.drivers[driver_index].booking_indexes[1] = second_booking_index;
+    my_business.drivers[driver_index].booking_count = 2;
+
     delay(100);
 
-    //assign the quotes to the customer and driver 
-    write_line("Assigning the quotes to the customer and driver");
-    juan.quotes[0] = &first_quote;
-    juan.quotes[1] = &second_quote;
-    alberto.quotes[0] = &first_quote;
-    alberto.quotes[1] = &second_quote;
-    juan.quote_count += 2;
-    alberto.quote_count += 2;
-
-    //simulates creating one by one
-    delay(100);
-    
-    //assign the quotes to the customer and driver 
-    write_line("Assigning the bookings to the customer and driver");
-    juan.bookings[0] = &first_booking;
-    juan.bookings[1] = &secong_booking;
-    alberto.bookings[0] = &first_booking;
-    alberto.bookings[1] = &secong_booking;
-    juan.booking_count += 2;
-    alberto.booking_count += 2;
-
-    write_line("Assigning everything to the business");
-    //assing the drivers, customers, quotes and bookings to the business
-    my_business.bookings[0] = &first_booking;
-    my_business.bookings[1] = &secong_booking;
-    my_business.quotes[0] = &first_quote;
-    my_business.quotes[1] = &second_quote;
-    my_business.customers[0] = &juan;
-    my_business.drivers[0] = &alberto;
-
-    //updating the counts of everything
-    my_business.customer_count += 1;
-    my_business.driver_count += 1;
-    my_business.booking_count += 2;
-    my_business.quote_count += 2;
-
-    
     loading();
     end_text_formatted("All done!");
 
-    //returning the business with all the info
     return my_business;
 }
+
 
 //Customer fuctions
 //get_quote()
@@ -272,22 +252,20 @@ void display_menu(string options[], int count) {
 }
 
 // Display services and read service from the user
-service read_service( business &uber) {
+ServiceWithIndex read_service(business &uber) {
     write_line("Service selection");
-    // display all the services
-    for (int i = 0; i < uber.number_of_services; i++)
-    {
+
+    // Display all services
+    for (int i = 0; i < uber.number_of_services; i++) {
         write_line(to_string(i + 1) + " - " + uber.services[i].name);
     }
 
-    //Display the services to the customer and ask user to choose
-    int option = read_integer("Select 1 to " + to_string(uber.number_of_services) + ":", 1, uber.number_of_services);
-    
-    //creates a new service with the number selected
-    service service_chosen = uber.services[option - 1];
-    
-    //return the service
-    return service_chosen;
+    // Ask the user to choose a service
+    int option = read_integer("Select 1 to " + to_string(uber.number_of_services) + ": ", 1, uber.number_of_services);
+
+    // Return the service and its index
+    ServiceWithIndex result = { uber.services[option - 1], option - 1 };
+    return result;
 }
 int calculate_price(int mins, int base) {
     //calculate travel cost
@@ -313,58 +291,65 @@ void display_quote(int base, int mins, int total) {
     write_line("");
 }
 //create a new quote
-quote create_quote(customer &user, string pick_up, string drop_off, service service, int price) {
-    //creates the quote
+quote create_quote(int customer_index, string pick_up, string drop_off, int service_index, int price) {
+    // Create the quote with reference indexes
     quote new_quote = {
-        &user,
+        customer_index,
         pick_up,
         drop_off,
-        &service,
+        service_index,
         price,
         not_accepted
     };
-    //assings the bookings to the customer and the driver
-    user.quotes[user.quote_count] = &new_quote;
-    
-    //updates the quotes count of the user
-    user.quote_count++;
-
     return new_quote;
 }
 
-//creates a new booking
-booking create_booking(quote &quote, driver &driver, customer &customer, string date) {
-   // creates the booking
-    booking new_boooking = {
-        &quote,
-        &driver,
-        &customer,
+booking create_booking(int quote_index, int driver_index, int customer_index, string date, business &my_business) {
+    // Create the booking with reference indexes
+    booking new_booking = {
+        quote_index,
+        driver_index,
+        customer_index,
         date,
         not_accepted
     };
-    
-    //assings the bookings to the customer and the driver
-    customer.bookings[customer.booking_count] = &new_boooking;
-    driver.bookings[driver.booking_count] = &new_boooking;
 
-    //updates the bookings count of the customer and driver
-    customer.booking_count++;
-    driver.booking_count++;
-    
-    return new_boooking;
+    // Assign the booking to the customer
+    customer &c = my_business.customers[customer_index];
+    c.booking_indexes[c.booking_count] = my_business.booking_count;
+    c.booking_count++;
+
+    // Assign the booking to the driver
+    driver &d = my_business.drivers[driver_index];
+    d.booking_indexes[d.booking_count] = my_business.booking_count;
+    d.booking_count++;
+
+    // Store the booking in the business
+    my_business.bookings[my_business.booking_count] = new_booking;
+    my_business.booking_count++;
+
+    return new_booking;
 }
 
-void display_booking(booking booking) {
+
+void display_booking(booking booking, business uber) {
+
+    // write_line("quote index: " + to_string(booking.quote_index));
+    // write_line("quote count: " + to_string(uber.quote_count));
+    // write_line("booking index: " + uber.quotes[uber.quote_count].pick_up);
+    new_text_formatted("Booking successfully booked!");
     write_line("");
+    write_line("Details:");
     write_line("Date: " + booking.date);
-    write_line("Pick Up: " + booking.quote->pick_up);
-    write_line("Drop Up: " + booking.quote->drop_off);
-    write_line("Service: " + booking.quote->service->name);
-    write_line("Price: " +  to_string(booking.quote->total_price));
-    write_line("Driver: " +  booking.driver->name);
+    write_line("Pick Up: " + uber.quotes[booking.quote_index].pick_up );
+    write_line("Drop Up: " + uber.quotes[booking.quote_index].drop_off );
+    write_line("Service: " + uber.services[uber.quotes[booking.quote_index].service_index].name);
+    write_line("Price: " +  to_string(uber.quotes[booking.quote_index].total_price));
+    write_line("Driver: " +  uber.drivers[booking.driver_id].name);
+    write_line("");
 }
 // Customer logic manager 
-void logic_manager(string options[], int options_length,  business &uber) {
+void logic_manager(string options[], int options_length,  business uber) {
     int option;
 
     //Greets the customer with a line
@@ -392,49 +377,52 @@ void logic_manager(string options[], int options_length,  business &uber) {
             //Gets the drop off from the user
             string drop_off = read_string("Drop off:");
  
-            //read_service
-            service chosen_service = read_service(uber);
+            //read_service and saves the index of the service
+            ServiceWithIndex chosen_service = read_service(uber);
+            service selected_service = chosen_service.selected_service;
+            int service_index = chosen_service.index;
 
             //base price
-            int base_price = chosen_service.price;
+            int base_price = selected_service.price;
 
             //calculates distance
             int travel_time_in_mins = calculate_time_between_addresses(pick_up, drop_off);
 
             //calculate price
             int total_price = calculate_price(travel_time_in_mins, base_price);
-
-            //create quote
-            quote new_quote = create_quote(*uber.customers[0], pick_up, drop_off, chosen_service, total_price);
             
-            //updates the quote count of the business
+            int customer_index = uber.customer_count;
+            int quote_index = uber.quote_count;
+            int driver_index = 0;
+
+            // Create the quote and assign it to the customer
+            quote new_quote = create_quote(customer_index, pick_up, drop_off, service_index, total_price);
+            // Store the new quote in the business quotes array
+            uber.quotes[uber.quote_count] = new_quote;
+
+            // Assign the index of the new quote to the customer's quote_indexes
+            uber.customers[customer_index].quote_indexes[uber.customers[customer_index].quote_count] = uber.quote_count;
+
+            // Update the customer's quote count
+            uber.customers[customer_index].quote_count++;
+
+            // Update the total quote count in the business
             uber.quote_count++;
 
-            //diplay quote
+            // Display the quote
             display_quote(base_price, travel_time_in_mins, total_price);
 
-            // ask the user if they would like to accept the quote
-            string ans  =read_string("Would you like to book this quote [y | n]: ");
+            // Ask the user if they want to accept the quote
+            string ans = to_lowercase(read_string("Would you like to book this quote [y | n]: "));
 
-            // logic to book or not the quote based on users input
-            if (to_lowercase(ans) == "y" || to_lowercase(ans) == "yes")
-            {
+            // If accepted, create and assign the booking
+            if (ans == "y" || ans == "yes") {
                 string date = read_string("Service_date: ");
-                //creates the new booking
-                new_booking = create_booking(new_quote, *uber.drivers[0], *uber.customers[0], date);
-                
-                //assings the booking to the business
-                uber.bookings[uber.booking_count] = &new_booking;
-
-                //updates the booking count of the business, customer and driver
-                uber.booking_count++;
-                uber.customers[0]->booking_count++;
-                uber.drivers[0]->booking_count++;
-
+                new_booking = create_booking(quote_index, driver_index, customer_index, date, uber);
             }
-            
+
             // display the booking
-            display_booking(new_booking);
+            display_booking(new_booking, uber);
 
             //ask user
             break;
@@ -521,3 +509,25 @@ int main() {
     
     return 0;
 }
+
+//A business has many services
+//A business has many quotes
+//A business has many customers
+//A buiness has many drivers
+//A business has many bookings
+
+//A Service has to a business
+//A Service has many quotes
+
+//A quote has one service
+//A quote has one customer
+//A quote has one business
+
+//A customer has one business
+//A cutomer has many quotes
+//A customer has many bookings
+
+//A booking has one customer
+//A booking has one driver
+//A booking has one business
+//A boooking has one quote
