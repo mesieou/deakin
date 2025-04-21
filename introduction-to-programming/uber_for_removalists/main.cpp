@@ -332,20 +332,29 @@ booking create_booking(int quote_index, int driver_index, int customer_index, st
 }
 
 
-void display_booking(booking booking, business uber) {
+void display_booking(booking curr_booking, business uber) {
 
-    // write_line("quote index: " + to_string(booking.quote_index));
-    // write_line("quote count: " + to_string(uber.quote_count));
-    // write_line("booking index: " + uber.quotes[uber.quote_count].pick_up);
-    new_text_formatted("Booking successfully booked!");
+    //retrieves the quote associated with the current iteration booking
+    quote curr_quote = uber.quotes[curr_booking.quote_index];
+
+    //retrieves the service associated with the current iteration quote
+    service curr_service = uber.services[curr_quote.service_index];
+
+    //retrieves the driver associated with the current iteration booking
+    driver curr_driver = uber.drivers[curr_booking.driver_id];
+
+    //retrieves the customer associated with the current iteration booking
+    customer curr_customer = uber.customers[curr_booking.customer_id];
+
+    //displays all the details to the user
     write_line("");
-    write_line("Details:");
-    write_line("Date: " + booking.date);
-    write_line("Pick Up: " + uber.quotes[booking.quote_index].pick_up );
-    write_line("Drop Up: " + uber.quotes[booking.quote_index].drop_off );
-    write_line("Service: " + uber.services[uber.quotes[booking.quote_index].service_index].name);
-    write_line("Price: " +  to_string(uber.quotes[booking.quote_index].total_price));
-    write_line("Driver: " +  uber.drivers[booking.driver_id].name);
+    write_line("Date: " + curr_booking.date);
+    write_line("Pick Up: " + curr_quote.pick_up );
+    write_line("Drop Up: " + curr_quote.drop_off );
+    write_line("Service: " + curr_service.name);
+    write_line("Price: " +  to_string(curr_quote.total_price));
+    write_line("Driver: " +  curr_driver.name);
+    write_line("Customer: " +  curr_customer.name);
     write_line("");
 }
 
@@ -375,7 +384,7 @@ quote quote_form(business uber, int customer_index) {
     
     // Store the new quote in the business quotes array
     uber.quotes[uber.quote_count] = new_quote;
-
+    
     // Assign the index of the new quote to the customer's quote_indexes
     uber.customers[customer_index].quote_indexes[uber.customers[customer_index].quote_count] = uber.quote_count;
 
@@ -390,10 +399,22 @@ quote quote_form(business uber, int customer_index) {
 
     return new_quote;
 }
+
+//displays all the bookings
+void show_bookings(business uber) {
+
+    //loop through each of the bookings and deplay each booking
+    for (int i = 0; i < uber.booking_count; i++)
+    {
+        booking curr_booking  = uber.bookings[i];
+        display_booking(curr_booking, uber);
+    }
+    
+}
 // Customer logic manager 
 void checks_quote_acceptance_and_create_booking(business uber, int customer_index, int driver_index) {
     // store the indexes of customer, quote and driver to create the quote and service
-    int quote_index = uber.quote_count;
+    int quote_index = uber.quote_count - 1;
 
      // Ask the user if they want to accept the quote
      string ans = to_lowercase(read_string("Would you like to book this quote [y | n]: "));
@@ -439,6 +460,7 @@ void logic_manager(string options[], int options_length,  business uber) {
             break;
         case 3:
             //Show all the bookings
+            show_bookings(uber);
             break;
         case 4:
             //exits and displays a message to the user
