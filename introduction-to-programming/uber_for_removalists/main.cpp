@@ -87,13 +87,11 @@ void new_text_formatted(string text) {
     write_line("-----------------------------------------------");
     write_line(text);
 }
-
 //formats the start of something new
 void end_text_formatted(string text) {
     write_line(text);
     write_line("");
 }
-
 //simulates loading
 void loading()
 {
@@ -113,7 +111,6 @@ void loading()
     
     write_line("");  // Move to the next line after the loading is complete
 }
-
 //Create dummy data to test the functions and the program
 business create_dummy_data() {
     // Create a business with 3 services
@@ -220,7 +217,11 @@ business create_dummy_data() {
 
     return my_business;
 }
-  
+
+
+
+
+
 // Displays a menu
 void display_menu(string options[], int count) {
     //iterates through the options and display each option
@@ -323,7 +324,7 @@ string status_to_string(status s) {
     }
 }
 
-
+//display one specific bookings
 void display_booking(booking curr_booking, business uber) {
 
     //retrieves the quote associated with the current iteration booking
@@ -352,6 +353,7 @@ void display_booking(booking curr_booking, business uber) {
     write_line("");
 }
 
+//asks all the questions to the custoner to calculate and provide a quote
 int quote_form(business &uber, int customer_index) {
     //Gets the pick up from the user
     string pick_up = read_string("Pick up:");
@@ -434,8 +436,28 @@ void checks_quote_acceptance_and_create_booking(business &uber, int customer_ind
     } 
 }
 
-// void customer_logic_manager(string options[], int options_length,  business &uber) {
+//Asks the user whether they are a driver or a customer
+int read_interface(int option) {
+    int options_length = 3;
+    //initialises the array of options
+    string options[] = {"Customer", "Driver", "Exit"};
     
+    //shows the initial menu to the user
+    display_menu(options, options_length);
+
+    //gets the user option
+    option = read_integer("Select 1 to " + to_string(options_length) + ":", 1 , options_length);
+    return option;
+}
+
+//marks the booking status as completed
+void mark_booking_as_completed(business &uber, int booking_index) {
+    uber.bookings[booking_index].status = completed;
+}
+
+
+
+
 // Customer logic manager 
 void customer_logic_manager(string options[], int options_length,  business &uber, int customer_index) {
     int option;
@@ -481,10 +503,8 @@ void customer_logic_manager(string options[], int options_length,  business &ube
     } while (option !=4);
 }
 
-//marks the booking status as completed
-void mark_booking_as_completed(business &uber, int booking_index) {
-    uber.bookings[booking_index].status = completed;
-}
+
+
 
 // Driver logic manager    
 void driver_logic_manager(string options[], int options_length,  business &uber, int driver_index) {
@@ -531,19 +551,7 @@ void driver_logic_manager(string options[], int options_length,  business &uber,
     } while (option !=3);
 }
 
-//Asks the user whether they are a driver or a customer
-int read_interface(int option) {
-    int options_length = 3;
-    //initialises the array of options
-    string options[] = {"Customer", "Driver", "Exit"};
-    
-    //shows the initial menu to the user
-    display_menu(options, options_length);
 
-    //gets the user option
-    option = read_integer("Select 1 to " + to_string(options_length) + ":", 1 , options_length);
-    return option;
-}
 
 int main() {
     // Initialise  dummy data
@@ -587,6 +595,7 @@ int main() {
         case 2:
             // simulating log in and having the driver id logged in
             driver_index = 0;
+
             //show driver_logic_manager
             driver_logic_manager(driver_options, driver_options_length, uber, driver_index);
             break;
@@ -595,7 +604,6 @@ int main() {
             end_text_formatted("Bye Bye");
             break;
         default:
-
             end_text_formatted("Not a valid entry. Please enter a number from 1 to 3.");
             break;
         }
@@ -603,25 +611,3 @@ int main() {
     
     return 0;
 }
-
-//A business has many services
-//A business has many quotes
-//A business has many customers
-//A buiness has many drivers
-//A business has many bookings
-
-//A Service has to a business
-//A Service has many quotes
-
-//A quote has one service
-//A quote has one customer
-//A quote has one business
-
-//A customer has one business
-//A cutomer has many quotes
-//A customer has many bookings
-
-//A booking has one customer
-//A booking has one driver
-//A booking has one business
-//A boooking has one quote
