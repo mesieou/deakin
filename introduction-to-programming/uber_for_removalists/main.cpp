@@ -156,7 +156,7 @@ business create_dummy_data() {
         "57 Aberdenn St, Fitzroy vic 3300",
         0, // service index
         450,
-        not_accepted
+        accepted    
     };
 
     quote second_quote = {
@@ -196,7 +196,7 @@ business create_dummy_data() {
         driver_index,
         customer_index,
         "06/12/2025",
-        accepted
+        completed
     };
 
     int first_booking_index = my_business.booking_count++;
@@ -220,27 +220,6 @@ business create_dummy_data() {
 
     return my_business;
 }
-
-
-//Customer fuctions
-//get_quote()
-  //book_service()
-    //read_date
-    //send_booking_to_driver
-    //new_booking
-    //send_message_notificaton
-    //display_booking
-  //see_all_bookings
-
-//driver functions
-  //get_quotes(not accepted)
-  //get_jobs(not completed)
-  //read_option
-  //accept_quotes()
-  //complete_job()
-  //show_job(accepted)
-  //display_quotes(not accepted)
-  //display_jobs(not complete)
   
 // Displays a menu
 void display_menu(string options[], int count) {
@@ -267,6 +246,8 @@ ServiceWithIndex read_service(business &uber) {
     ServiceWithIndex result = { uber.services[option - 1], option - 1 };
     return result;
 }
+
+// calculate a quote price with the travel time and base cost
 int calculate_price(int mins, int base) {
     //calculate travel cost
     int travel_cost = mins * TRAVEL_COST_PER_MINUTE;
@@ -275,6 +256,7 @@ int calculate_price(int mins, int base) {
     return total_cost;
 }
 
+// simulates the calculation of time between addressess
 int calculate_time_between_addresses(string pick_up, string drop_off) {
     // Simulates the calculation of distance between pick up and drop off 
     int mins = rnd(5, 180);  // returns a random integer from 1 to 50 inclusive
@@ -311,7 +293,7 @@ booking create_booking(int quote_index, int driver_index, int customer_index, st
         driver_index,
         customer_index,
         date,
-        not_accepted
+        accepted
     };
 
     // Assign the booking to the customer
@@ -411,7 +393,8 @@ void show_bookings(business uber) {
     }
     
 }
-// Customer logic manager 
+
+//asks the customer if the wnat to book the quote givem and create the booking
 void checks_quote_acceptance_and_create_booking(business &uber, int customer_index, int driver_index, int new_quote_index) {
      // Ask the user if they want to accept the quote
      string ans = to_lowercase(read_string("Would you like to book this quote [y | n]: "));
@@ -429,7 +412,11 @@ void checks_quote_acceptance_and_create_booking(business &uber, int customer_ind
     } 
 }
 
-void logic_manager(string options[], int options_length,  business &uber) {
+// Customer logic manager 
+void customer_logic_manager(string options[], int options_length,  business &uber) {
+
+// Driver logic manager    
+void driver_logic_manager(string options[], int options_length,  business &uber) {
     int option;
     int customer_index = 0;
     int driver_index = 0;
@@ -504,11 +491,11 @@ int main() {
         int customer_options_length = 4;
         
         //initialise the driver menu options in an array
-        int driver_options_length = 4;
+        int driver_options_length = 3;
         
         //initialse the driver and customer arrays that holds the options of the menu
         string customer_options[] = {"Get a quote", "Book a service", "See all my bookings", "Exit"};
-        string driver_options[] = {"Check Requests", "Mark jobs as completed", "See all my jobs", "Exit"};
+        string driver_options[] = {"See all my jobs", "Mark jobs as completed", "Exit"};
 
         // driver or customer logic
         new_text_formatted("Welcome to Uber for Removalists");
@@ -521,7 +508,7 @@ int main() {
         {
         case 1:
             //show custtomer_logic_manager
-            logic_manager(customer_options, customer_options_length, uber);
+            customer_logic_manager(customer_options, customer_options_length, uber);
             break;
         case 2:
             //show driver_logic_manager
