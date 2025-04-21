@@ -383,23 +383,33 @@ int quote_form(business &uber, int customer_index) {
 }
 
 //displays all the bookings
-void show_bookings(business uber) {
+void show_bookings_by_status(business uber, status status, int user_index) {
 
     //loop through each of the bookings and deplay each booking
     for (int i = 0; i < uber.booking_count; i++)
     {
         booking curr_booking  = uber.bookings[i];
-        display_booking(curr_booking, uber);
+
+        // only displays the bookings with the status given
+        if (curr_booking.status == status)
+        {
+            display_booking(curr_booking, uber);
+        }
+        
     }
     
 }
 
 //asks the customer if the wnat to book the quote givem and create the booking
-void checks_quote_acceptance_and_create_booking(business &uber, int customer_index, int driver_index, int new_quote_index) {
-     // Ask the user if they want to accept the quote
-     string ans = to_lowercase(read_string("Would you like to book this quote [y | n]: "));
-
+void checks_quote_acceptance_and_create_booking(business &uber, int customer_index, int new_quote_index) {
+    
+    // Ask the user if they want to accept the quote
+    string ans = to_lowercase(read_string("Would you like to book this quote [y | n]: "));
+    
     if (ans == "y" || ans == "yes") {
+        // simulates to find a driver id 
+        int driver_index = 0;
+        
         // Ask the user for the date of the service
         string date = read_string("Service_date: ");
 
@@ -412,14 +422,11 @@ void checks_quote_acceptance_and_create_booking(business &uber, int customer_ind
     } 
 }
 
+// void customer_logic_manager(string options[], int options_length,  business &uber) {
+    
 // Customer logic manager 
-void customer_logic_manager(string options[], int options_length,  business &uber) {
-
-// Driver logic manager    
-void driver_logic_manager(string options[], int options_length,  business &uber) {
+void customer_logic_manager(string options[], int options_length,  business &uber, int customer_index) {
     int option;
-    int customer_index = 0;
-    int driver_index = 0;
 
     //Greets the customer with a line
     new_text_formatted("Welcome back!");
@@ -445,21 +452,55 @@ void driver_logic_manager(string options[], int options_length,  business &uber)
             new_quote_index = quote_form(uber, customer_index);
 
             // If accepted, create and assign the booking
-            checks_quote_acceptance_and_create_booking(uber, customer_index, driver_index, new_quote_index);
+            checks_quote_acceptance_and_create_booking(uber, customer_index, new_quote_index);
             break;
         case 3:
             //Show all the bookings
-            show_bookings(uber);
+            show_bookings_by_status(uber, accepted, customer_index);
             break;
         case 4:
             //exits and displays a message to the user
             end_text_formatted("Bye Bye");
             break;
         default:
-            end_text_formatted("Not a valid entry. Please enter a number from 1 to 3.");
+            end_text_formatted("Not a valid entry. Please enter a number from 1 to 4.");
             break;
         }
     } while (option !=4);
+}
+
+
+// Driver logic manager    
+void driver_logic_manager(string options[], int options_length,  business &uber, int driver_index)) {
+    int option;
+
+    //Greets the customer with a line
+    new_text_formatted("Welcome back!");
+
+    //Redirects to the correct function based on the user selection
+    do
+    {   
+        //shows the initial menu
+        display_menu(options, options_length);
+        
+        //Asks the customer what they want to do
+        option = read_integer("Select 1 to " + to_string(options_length) + ":", 1, options_length);
+        //Redirects to the correct interface based on the user selection
+        switch (option)
+        {
+        //Creates a quote to the user
+        case 1:
+           //show the bookings of the driver that are accepted
+           show_bookings_by_status(uber, accepted, driver_index);
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            end_text_formatted("Not a valid entry. Please enter a number from 1 to 3.");
+            break;
+        }
+    } while (option !=3);
 }
 
 //Asks the user whether they are a driver or a customer
@@ -507,12 +548,17 @@ int main() {
         switch (option)
         {
         case 1:
+           // simulating log in and having the customer id logged in
+           int customer_index = 0;
+
             //show custtomer_logic_manager
-            customer_logic_manager(customer_options, customer_options_length, uber);
+            customer_logic_manager(customer_options, customer_options_length, uber, customer_index);
             break;
         case 2:
+            // simulating log in and having the driver id logged in
+            int driver_index = 0;
             //show driver_logic_manager
-            logic_manager(driver_options, driver_options_length, uber);
+            driver_logic_manager(driver_options, driver_options_length, uber, driver_index);
             break;
         case 3:
             //exit the menu
