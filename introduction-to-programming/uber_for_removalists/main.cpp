@@ -313,6 +313,16 @@ booking create_booking(int quote_index, int driver_index, int customer_index, st
     return new_booking;
 }
 
+//maps the status to a string to show:
+string status_to_string(status s) {
+    switch (s) {
+        case not_accepted: return "Not Accepted";
+        case accepted: return "Accepted";
+        case completed: return "Completed";
+        default: return "Unknown";
+    }
+}
+
 
 void display_booking(booking curr_booking, business uber) {
 
@@ -337,7 +347,7 @@ void display_booking(booking curr_booking, business uber) {
     write_line("Price: " +  to_string(curr_quote.total_price));
     write_line("Driver: " +  curr_driver.name);
     write_line("Customer: " +  curr_customer.name);
-    write_line("Status: " +  to_string(curr_booking.status));
+    write_line("Status: " +  status_to_string(curr_booking.status));
 
     write_line("");
 }
@@ -507,7 +517,7 @@ void driver_logic_manager(string options[], int options_length,  business &uber,
             booking_index_to_mark_as_completed = read_integer("Select 1 to " + to_string( uber.drivers[driver_index].booking_count) + ":", 1, uber.drivers[driver_index].booking_count);
 
             //mark the booking as completed
-            mark_booking_as_completed(uber, booking_index_to_mark_as_completed);
+            mark_booking_as_completed(uber, booking_index_to_mark_as_completed - 1);
 
             break;
         case 3:
