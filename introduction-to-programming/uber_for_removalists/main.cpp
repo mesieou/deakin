@@ -196,7 +196,7 @@ business create_dummy_data() {
         driver_index,
         customer_index,
         "06/12/2025",
-        completed
+        accepted
     };
 
     int first_booking_index = my_business.booking_count++;
@@ -337,6 +337,8 @@ void display_booking(booking curr_booking, business uber) {
     write_line("Price: " +  to_string(curr_quote.total_price));
     write_line("Driver: " +  curr_driver.name);
     write_line("Customer: " +  curr_customer.name);
+    write_line("Status: " +  to_string(curr_booking.status));
+
     write_line("");
 }
 
@@ -469,11 +471,15 @@ void customer_logic_manager(string options[], int options_length,  business &ube
     } while (option !=4);
 }
 
+//marks the booking status as completed
+void mark_booking_as_completed(business &uber, int booking_index) {
+    uber.bookings[booking_index].status = completed;
+}
 
 // Driver logic manager    
-void driver_logic_manager(string options[], int options_length,  business &uber, int driver_index)) {
+void driver_logic_manager(string options[], int options_length,  business &uber, int driver_index) {
     int option;
-
+    int booking_index_to_mark_as_completed;
     //Greets the customer with a line
     new_text_formatted("Welcome back!");
 
@@ -490,11 +496,23 @@ void driver_logic_manager(string options[], int options_length,  business &uber,
         {
         //Creates a quote to the user
         case 1:
-           //show the bookings of the driver that are accepted
-           show_bookings_by_status(uber, accepted, driver_index);
+            //show the bookings of the driver that are accepted
+            show_bookings_by_status(uber, accepted, driver_index);
+            break;
         case 2:
+            //show the bookings of the driver that are accepted
+            show_bookings_by_status(uber, accepted, driver_index);
+            
+            //ask the user wich booking to mark as completed
+            booking_index_to_mark_as_completed = read_integer("Select 1 to " + to_string( uber.drivers[driver_index].booking_count) + ":", 1, uber.drivers[driver_index].booking_count);
+
+            //mark the booking as completed
+            mark_booking_as_completed(uber, booking_index_to_mark_as_completed);
+
             break;
         case 3:
+            //exits and displays a message to the user
+            end_text_formatted("Bye Bye");
             break;
         default:
             end_text_formatted("Not a valid entry. Please enter a number from 1 to 3.");
@@ -522,7 +540,9 @@ int main() {
     business uber = create_dummy_data();
 
     int option;
-    
+    int driver_index;
+    int customer_index;
+
     do
     {   
         //number of options in the general menu
@@ -549,14 +569,14 @@ int main() {
         {
         case 1:
            // simulating log in and having the customer id logged in
-           int customer_index = 0;
+           customer_index = 0;
 
             //show custtomer_logic_manager
             customer_logic_manager(customer_options, customer_options_length, uber, customer_index);
             break;
         case 2:
             // simulating log in and having the driver id logged in
-            int driver_index = 0;
+            driver_index = 0;
             //show driver_logic_manager
             driver_logic_manager(driver_options, driver_options_length, uber, driver_index);
             break;
