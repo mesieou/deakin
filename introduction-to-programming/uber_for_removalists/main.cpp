@@ -358,7 +358,7 @@ void display_booking(booking curr_booking, business uber) {
     write_line("");
 }
 
-quote quote_form(business uber, int customer_index) {
+int quote_form(business &uber, int customer_index) {
     //Gets the pick up from the user
     string pick_up = read_string("Pick up:");
    
@@ -397,7 +397,7 @@ quote quote_form(business uber, int customer_index) {
     // Display the quote
     display_quote(base_price, travel_time_in_mins, total_price);
 
-    return new_quote;
+    return uber.quote_count - 1;
 }
 
 //displays all the bookings
@@ -412,24 +412,26 @@ void show_bookings(business uber) {
     
 }
 // Customer logic manager 
-void checks_quote_acceptance_and_create_booking(business uber, int customer_index, int driver_index) {
-    // store the indexes of customer, quote and driver to create the quote and service
-    int quote_index = uber.quote_count - 1;
-
+void checks_quote_acceptance_and_create_booking(business &uber, int customer_index, int driver_index, int new_quote_index) {
      // Ask the user if they want to accept the quote
      string ans = to_lowercase(read_string("Would you like to book this quote [y | n]: "));
 
     if (ans == "y" || ans == "yes") {
+        // Ask the user for the date of the service
         string date = read_string("Service_date: ");
-        booking new_booking = create_booking(quote_index, driver_index, customer_index, date, uber);
+
+        //creates the booking with the new quote reference, the driver and the customer and date
+        booking new_booking = create_booking(new_quote_index, driver_index, customer_index, date, uber);
+        
         // display the booking
+        write_line("Succesfully Booked!. Please see the details:");
         display_booking(new_booking, uber);
     } 
 }
 
-void logic_manager(string options[], int options_length,  business uber) {
+void logic_manager(string options[], int options_length,  business &uber) {
     int option;
-    int customer_index = uber.customer_count;
+    int customer_index = 0;
     int driver_index = 0;
 
     //Greets the customer with a line
@@ -439,7 +441,7 @@ void logic_manager(string options[], int options_length,  business uber) {
     do
     {   
         //intialises quote
-        quote new_quote;
+        int new_quote_index;
 
         //shows the initial menu
         display_menu(options, options_length);
@@ -453,10 +455,10 @@ void logic_manager(string options[], int options_length,  business uber) {
         case 1:
         case 2:
             // ask the user all the questions, calculate, create, display and return the quote
-            new_quote = quote_form(uber, customer_index);
+            new_quote_index = quote_form(uber, customer_index);
 
             // If accepted, create and assign the booking
-            checks_quote_acceptance_and_create_booking(uber, customer_index, driver_index);
+            checks_quote_acceptance_and_create_booking(uber, customer_index, driver_index, new_quote_index);
             break;
         case 3:
             //Show all the bookings
