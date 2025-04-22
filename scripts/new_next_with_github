@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "🚀 Enter project name:"
+read project
+
+# Create the Next.js project with Supabase template
+npx create-next-app@latest $project -e with-supabase
+
+echo "🗂️ Creating Next.js + Supabase project: $project"
+cd $project || exit
+
+# Set up local .env file
+cp .env.local.example .env.local
+echo "✅ Created .env.local (remember to fill in Supabase keys!)"
+
+# Initialize Git if not already
+git init
+
+# Add and commit initial files
+git add .
+git commit -m "Initial commit with Next.js + Supabase"
+
+# Create GitHub repo and set origin
+gh repo create mesieou/$project --public --source=. --remote=origin --push
+
+# Fallback: In case origin not added by GH CLI
+git remote get-url origin 2>/dev/null || git remote add origin git@github.com:mesieou/$project.git
+
+# Push to GitHub
+git push -u origin main
+
+echo "✅ Project $project is live at https://github.com/mesieou/$project"
