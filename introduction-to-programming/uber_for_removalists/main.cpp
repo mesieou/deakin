@@ -31,19 +31,19 @@ struct ServiceWithIndex {
 
 // Quote
 struct quote {
-    int customer_id; // index in business.customers
+    int customer_id;
     string pick_up;
     string drop_off;
-    int service_index; // index in business.services
+    int service_index;
     int total_price;
     status status;
 };
 
 // Booking
 struct booking {
-    int quote_index;   // index in business.quotes
-    int driver_id;     // index in business.drivers
-    int customer_id;   // index in business.customers
+    int quote_index;
+    int driver_id;
+    int customer_id;
     string date;
     status status;
 };
@@ -52,7 +52,7 @@ struct booking {
 struct driver {
     string name;
     string email;
-    int booking_indexes[MAX_BOOKINGS]; // indexes in business.bookings
+    int booking_indexes[MAX_BOOKINGS];
     int booking_count = 0;
 };
 
@@ -60,8 +60,8 @@ struct driver {
 struct customer {
     string name;
     string email;
-    int quote_indexes[MAX_QUOTES];    // indexes in business.quotes
-    int booking_indexes[MAX_BOOKINGS]; // indexes in business.bookings
+    int quote_indexes[MAX_QUOTES];
+    int booking_indexes[MAX_BOOKINGS];
     int quote_count = 0;
     int booking_count = 0;
 };
@@ -80,7 +80,12 @@ struct business {
     int customer_count = 0;
 };
 
-
+// Forward declarations of functions
+quote create_quote(int customer_index, string pick_up, string drop_off, int service_index, int price);
+booking create_booking(int quote_index, int driver_index, int customer_index, string date, business &my_business);
+ServiceWithIndex read_service(business &uber);
+int calculate_price(int mins, int base);
+bool show_driver_confirmation_popup(const quote &q, const service &s);
 
 //formats the start of something new
 void new_text_formatted(string text) {
@@ -217,10 +222,6 @@ business create_dummy_data() {
 
     return my_business;
 }
-
-
-
-
 
 // Displays a menu
 void display_menu(string options[], int count) {
@@ -427,13 +428,68 @@ void checks_quote_acceptance_and_create_booking(business &uber, int customer_ind
         // Ask the user for the date of the service
         string date = read_string("Service_date: ");
 
-        //creates the booking with the new quote reference, the driver and the customer and date
-        booking new_booking = create_booking(new_quote_index, driver_index, customer_index, date, uber);
-        
-        // display the booking
-        write_line("Succesfully Booked!. Please see the details:");
-        display_booking(new_booking, uber);
+        write_line("Waiting for the driver to confirm...");
+
+        // Show popup for driver confirmation
+        bool driver_accepted = show_driver_confirmation_popup(uber.quotes[new_quote_index], uber.services[uber.quotes[new_quote_index].service_index]);
+
+        if (driver_accepted) {
+            // Proceed with booking
+            booking new_booking = create_booking(new_quote_index, driver_index, customer_index, date, uber);
+            write_line("Booking was confirmed by the driver!");
+            display_booking(new_booking, uber);
+        } else {
+            write_line("Booking was rejected by the driver.");
+            // Optionally, update quote status or handle as needed
+        }
     } 
+}
+
+// Returns true if accepted, false if rejected
+bool show_driver_confirmation_popup(const quote &q, const service &s) {
+    window popup = open_window("Driver Confirmation", 400, 300);
+    bool decision_made = false;
+    bool accepted = false;
+
+    while (!window_close_requested(popup) && !decision_made) {
+        process_events();
+        clear_screen(COLOR_WHITE);
+
+        draw_text("New Job Request", COLOR_BLACK, "Arial", 20, 20, 20);
+        draw_text("Pickup: " + q.pick_up, COLOR_BLACK, "Arial", 16, 20, 60);
+        draw_text("Dropoff: " + q.drop_off, COLOR_BLACK, "Arial", 16, 20, 90);
+        draw_text("Service: " + s.name, COLOR_BLACK, "Arial", 16, 20, 120);
+        draw_text("Price: $" + to_string(q.total_price), COLOR_BLACK, "Arial", 16, 20, 150);
+
+        // Accept button
+        fill_rectangle(COLOR_GREEN, 50, 200, 100, 40);
+        draw_text("Accept", COLOR_WHITE, "Arial", 16, 70, 210);
+
+        // Reject button
+        fill_rectangle(COLOR_RED, 250, 200, 100, 40);
+        draw_text("Reject", COLOR_WHITE, "Arial", 16, 270, 210);
+
+        if (mouse_clicked(LEFT_BUTTON)) {
+            point_2d mouse = mouse_position();
+            if (mouse.x >= 50 && mouse.x <= 150 && mouse.y >= 200 && mouse.y <= 240) {
+                accepted = true;
+                decision_made = true;
+            }
+            if (mouse.x >= 250 && mouse.x <= 350 && mouse.y >= 200 && mouse.y <= 240) {
+                accepted = false;
+                decision_made = true;
+            }
+        }
+
+        refresh_screen(60);
+    }
+
+    close_window(popup);
+    // Give the OS time to close the window and process events
+    delay(200); // 200 ms delay
+    process_events();
+
+    return accepted;
 }
 
 //Asks the user whether they are a driver or a customer
@@ -454,9 +510,6 @@ int read_interface(int option) {
 void mark_booking_as_completed(business &uber, int booking_index) {
     uber.bookings[booking_index].status = completed;
 }
-
-
-
 
 // Customer logic manager 
 void customer_logic_manager(string options[], int options_length,  business &uber, int customer_index) {
@@ -503,9 +556,6 @@ void customer_logic_manager(string options[], int options_length,  business &ube
     } while (option !=4);
 }
 
-
-
-
 // Driver logic manager    
 void driver_logic_manager(string options[], int options_length,  business &uber, int driver_index) {
     int option;
@@ -551,63 +601,32 @@ void driver_logic_manager(string options[], int options_length,  business &uber,
     } while (option !=3);
 }
 
-
-
 int main() {
-    // Initialise  dummy data
+    // Initialize business with test data
     business uber = create_dummy_data();
-
-    int option;
-    int driver_index;
-    int customer_index;
-
-    do
-    {   
-        //number of options in the general menu
-        int options_length = 3;
+    
+    // Main application loop
+    while(true) {
+        // Display main menu
+        string options[] = {"Customer", "Driver", "Exit"};
+        display_menu(options, 3);
+        int option = read_integer("Select an option: ", 1, 3);
         
-        //initialise the customer menu options in an array
-        int customer_options_length = 4;
+        // Handle menu selection
+        if(option == 3) break;
         
-        //initialise the driver menu options in an array
-        int driver_options_length = 3;
-        
-        //initialse the driver and customer arrays that holds the options of the menu
-        string customer_options[] = {"Get a quote", "Book a service", "See all my bookings", "Exit"};
-        string driver_options[] = {"See all my jobs", "Mark jobs as completed", "Exit"};
-
-        // driver or customer logic
-        new_text_formatted("Welcome to Uber for Removalists");
-        
-        //Asks the user whether they are a driver or a customer
-        option = read_interface(options_length);
-
-        //Redirects to the correct interface based on the user selection
-        switch (option)
-        {
-        case 1:
-           // simulating log in and having the customer id logged in
-           customer_index = 0;
-
-            //show custtomer_logic_manager
-            customer_logic_manager(customer_options, customer_options_length, uber, customer_index);
-            break;
-        case 2:
-            // simulating log in and having the driver id logged in
-            driver_index = 0;
-
-            //show driver_logic_manager
-            driver_logic_manager(driver_options, driver_options_length, uber, driver_index);
-            break;
-        case 3:
-            //exit the menu
-            end_text_formatted("Bye Bye");
-            break;
-        default:
-            end_text_formatted("Not a valid entry. Please enter a number from 1 to 3.");
-            break;
+        if(option == 1) {
+            // Handle customer interface
+            int customer_index = 0;
+            string customer_options[] = {"Request Quote", "Make a Booking", "View Bookings", "Back"};
+            customer_logic_manager(customer_options, 4, uber, customer_index);
+        } else if(option == 2) {
+            // Handle driver interface
+            int driver_index = 0;
+            string driver_options[] = {"View Jobs", "Complete Job", "Back"};
+            driver_logic_manager(driver_options, 3, uber, driver_index);
         }
-    } while (option !=3);
+    }
     
     return 0;
 }
