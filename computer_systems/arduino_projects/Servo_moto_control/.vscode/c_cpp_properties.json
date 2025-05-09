@@ -8,10 +8,11 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/include",
-                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/src",
-                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/.pio/libdeps/uno/DHT sensor library",
-                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/.pio/libdeps/uno/Adafruit Unified Sensor",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/include",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/src",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/.pio/libdeps/uno/Servo/src",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/.pio/libdeps/uno/DHT sensor library",
+                "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/.pio/libdeps/uno/Adafruit Unified Sensor",
                 "/Users/juanbernal/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/Users/juanbernal/.platformio/packages/framework-arduino-avr/variants/standard",
                 "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
@@ -24,10 +25,11 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/include",
-                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/src",
-                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/.pio/libdeps/uno/DHT sensor library",
-                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Integratedt_environmental_monitoring/.pio/libdeps/uno/Adafruit Unified Sensor",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/include",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/src",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/.pio/libdeps/uno/Servo/src",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/.pio/libdeps/uno/DHT sensor library",
+                    "/Users/juanbernal/code/mesieou/2025/deakin/computer_systems/arduino_projects/Servo_moto_control/.pio/libdeps/uno/Adafruit Unified Sensor",
                     "/Users/juanbernal/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/Users/juanbernal/.platformio/packages/framework-arduino-avr/variants/standard",
                     "/Users/juanbernal/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",

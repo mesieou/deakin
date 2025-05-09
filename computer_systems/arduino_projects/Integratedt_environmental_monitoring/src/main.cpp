@@ -1,43 +1,59 @@
-#include <Arduino.h>
 #include "DHT.h"
 
-#define DHTPIN 2      // Digital pin connected to the DHT sensor
-#define DHTTYPE DHT22 // DHT 22 (AM2302)
+// --- Pin Definitions ---
+#define DHTPIN 2          // Digital pin connected to the DHT22
+#define DHTTYPE DHT22     // DHT 22 (AM2302)
+#define MOISTURE_PIN A0   // Analog pin for Soil Moisture sensor
 
-// creates the sensor object
+#define GREEN_LED 5       // Pin for green LED
+#define RED_LED 6         // Pin for red LED
+
+// --- Thresholds ---
+#define TEMP_THRESHOLD 30.0       // Celsius
+#define HUMIDITY_THRESHOLD 60.0   // Percent
+#define MOISTURE_THRESHOLD 700    // Analog value (0–1023)
+
 DHT dht(DHTPIN, DHTTYPE);
 
-void setup()
-{
-    // allows to receive info from arduino
-    Serial.begin(9600);
-    Serial.println("Initializing sensor...");
-    delay(2000);
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
 
+  pinMode(MOISTURE_PIN, INPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(RED_LED, OUTPUT);
 
-    // initialises the sensor object
-    dht.begin();
-    Serial.println("Sensor initialized");
-    delay(2000);
-
+  digitalWrite(GREEN_LED, HIGH);  // Green LED always ON
 }
 
 void loop() {
-    Serial.println("Reading data...");  // Debugging print to check if loop is running
-    
-    float humidity = dht.readHumidity();
-    float temperature = dht.readTemperature();
+  // --- Read temperature and humidity ---
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
 
-    if (isnan(humidity) || isnan(temperature)) {
-        Serial.println("Failed to read from DHT sensor!");
-        return;
-    }
+  // --- Read soil moisture ---
+  int moistureLevel = analogRead(MOISTURE_PIN);
 
-    Serial.print("Humidity: ");
-    Serial.print(humidity);
-    Serial.print("%, Temp: ");
-    Serial.print(temperature);
-    Serial.println(" Celsius");
+  // --- Output to Serial Monitor ---
+  Serial.print("Temp: ");
+  Serial.print(temperature);
+  Serial.print(" °C, Humidity: ");
+  Serial.print(humidity);
+  Serial.print(" %, Soil Moisture: ");
+  Serial.println(moistureLevel);
 
-    delay(2000);  // Wait for 2 seconds
+  // --- Check if any reading failed ---
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+
+  // --- Logic for Red LED ---
+  if (temperature > TEMP_THRESHOLD && humidity > HUMIDITY_THRESHOLD && moistureLevel > MOISTURE_THRESHOLD) {
+    digitalWrite(RED_LED, HIGH);
+  } else {
+    digitalWrite(RED_LED, LOW);
+  }
+
+  delay(2000);  // Wait for 2 seconds before the next reading
 }
