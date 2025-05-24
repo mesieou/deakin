@@ -631,6 +631,8 @@ void mark_booking_as_completed(business &uber, int booking_index) {
     uber.bookings[booking_index].status = completed;
 }
 
+
+
 // Customer logic manager 
 void customer_logic_manager(string options[], int options_length,  business &uber, int customer_index) {
     int option;
