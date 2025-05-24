@@ -1,5 +1,7 @@
 #include "utilities.h"
 #include "splashkit.h"
+#include <curl/curl.h>
+#include "json.hpp"
 
 //used for time delays
 #include <iostream>
@@ -13,6 +15,7 @@ const int MAX_QUOTES = 100;
 const int MAX_DRIVERS = 10;
 const int MAX_CUSTOMERS = 100;
 const double TRAVEL_COST_PER_MINUTE = 2.33;
+const string GOOGLE_MAPS_API_KEY = "AIzaSyD6kxT0Q93AFEkQdoRW2XKMHk1iznFfw2U"; // Replace with your actual API key
 
 // Enum
 enum status { not_accepted, accepted, completed };
@@ -29,6 +32,13 @@ struct ServiceWithIndex {
     int index;
 };
 
+// Route information from Google Maps API
+struct route_info {
+    double distance_km;
+    int duration_mins;
+    string polyline; // Encoded route path
+};
+
 // Quote
 struct quote {
     int customer_id;
@@ -37,6 +47,7 @@ struct quote {
     int service_index;
     int total_price;
     status status;
+    route_info route; // Added for route visualization
 };
 
 // Booking
@@ -86,6 +97,10 @@ booking create_booking(int quote_index, int driver_index, int customer_index, st
 ServiceWithIndex read_service(business &uber);
 int calculate_price(int mins, int base);
 bool show_driver_confirmation_popup(const quote &q, const service &s);
+route_info get_route_info(const string &origin, const string &destination);
+bool show_quote_visualization(const quote &q, const service &s);
+bool show_quote_acceptance_popup(const quote &q, const service &s);
+void checks_quote_acceptance_and_create_booking(business &uber, int customer_index, int new_quote_index);
 
 //formats the start of something new
 void new_text_formatted(string text) {
@@ -354,47 +369,162 @@ void display_booking(booking curr_booking, business uber) {
     write_line("");
 }
 
-//asks all the questions to the custoner to calculate and provide a quote
+// Callback function for CURL
+size_t WriteCallback(void* contents, size_t size, size_t nmemb, string* userp) {
+    userp->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+// Get route information from Google Maps API
+route_info get_route_info(const string &origin, const string &destination) {
+    route_info info;
+    CURL* curl = curl_easy_init();
+    string readBuffer;
+
+    if(curl) {
+        char* origin_escaped = curl_easy_escape(curl, origin.c_str(), (int)origin.length());
+        char* destination_escaped = curl_easy_escape(curl, destination.c_str(), (int)destination.length());
+
+        string url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+                     string(origin_escaped) +
+                     "&destination=" +
+                     string(destination_escaped) +
+                     "&key=" + GOOGLE_MAPS_API_KEY;
+
+        curl_free(origin_escaped);
+        curl_free(destination_escaped);
+
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+
+        CURLcode res = curl_easy_perform(curl);
+        if(res == CURLE_OK) {
+            auto json = nlohmann::json::parse(readBuffer);
+            
+            // Extract route information
+            if(json["status"] == "OK") {
+                auto route = json["routes"][0]["legs"][0];
+                info.distance_km = route["distance"]["value"].get<double>() / 1000.0;
+                info.duration_mins = route["duration"]["value"].get<int>() / 60;
+                info.polyline = json["routes"][0]["overview_polyline"]["points"].get<string>();
+            }
+        }
+        curl_easy_cleanup(curl);
+    }
+    return info;
+}
+
+// Show quote visualization window
+bool show_quote_visualization(const quote &q, const service &s) {
+    window quote_window = open_window("Quote Details", 900, 800);
+    delay(200);
+    bool decision_made = false;
+    bool accepted = false;
+
+    while(!window_close_requested(quote_window) && !decision_made) {
+        process_events();
+        clear_screen(COLOR_WHITE);
+
+        // Draw map background
+        fill_rectangle(COLOR_LIGHT_GRAY, 0, 0, 900, 450);
+
+        // Draw route using polyline
+        draw_line(COLOR_BLUE, point_at(100, 250), point_at(800, 250));
+
+        // Draw pickup and dropoff markers
+        fill_circle(COLOR_RED, 100, 250, 10);
+        fill_circle(COLOR_GREEN, 800, 250, 10);
+
+        // Draw quote details
+        draw_text("Quote Details", COLOR_BLACK, "Arial", 28, 20, 500);
+        draw_text("Pickup: " + q.pick_up, COLOR_BLACK, "Arial", 18, 20, 540);
+        draw_text("Dropoff: " + q.drop_off, COLOR_BLACK, "Arial", 18, 20, 570);
+        draw_text("Service: " + s.name, COLOR_BLACK, "Arial", 18, 20, 600);
+        
+        // Draw price breakdown
+        draw_text("Price Breakdown:", COLOR_BLACK, "Arial", 18, 500, 500);
+        draw_text("Base Service: $" + to_string(s.price), COLOR_BLACK, "Arial", 16, 500, 530);
+        draw_text("Travel Cost: $" + to_string(q.route.duration_mins * TRAVEL_COST_PER_MINUTE), COLOR_BLACK, "Arial", 16, 500, 560);
+        draw_text("Total: $" + to_string(q.total_price), COLOR_BLACK, "Arial", 18, 500, 590);
+
+        // Draw route information
+        draw_text("Route Information:", COLOR_BLACK, "Arial", 18, 20, 640);
+        draw_text("Distance: " + to_string(q.route.distance_km) + " km", COLOR_BLACK, "Arial", 16, 20, 670);
+        draw_text("Duration: " + to_string(q.route.duration_mins) + " mins", COLOR_BLACK, "Arial", 16, 20, 700);
+        draw_text("Travel Time: " + to_string(q.route.duration_mins) + " minutes", COLOR_BLACK, "Arial", 16, 500, 620);
+
+        // Draw accept button
+        fill_rectangle(COLOR_GREEN, 350, 650, 200, 50);
+        draw_text("Accept Quote", COLOR_WHITE, "Arial", 18, 400, 665);
+
+        // Draw reject button
+        fill_rectangle(COLOR_RED, 350, 710, 200, 50);
+        draw_text("Reject Quote", COLOR_WHITE, "Arial", 18, 400, 725);
+
+        if(mouse_clicked(LEFT_BUTTON)) {
+            point_2d mouse = mouse_position();
+            if(mouse.x >= 350 && mouse.x <= 550 && mouse.y >= 650 && mouse.y <= 700) {
+                accepted = true;
+                decision_made = true;
+                write_line("Quote accepted by customer.");
+            }
+            if(mouse.x >= 350 && mouse.x <= 550 && mouse.y >= 710 && mouse.y <= 760) {
+                accepted = false;
+                decision_made = true;
+                write_line("Quote rejected by customer.");
+            }
+        }
+
+        refresh_screen(60);
+    }
+
+    close_window(quote_window);
+    // Give the OS time to close the window and process events
+    delay(200); // 200 ms delay
+    process_events();
+
+    return accepted;
+}
+
+// Show quote acceptance popup
+bool show_quote_acceptance_popup(const quote &q, const service &s) {
+    show_quote_visualization(q, s);
+    return true; // For now, always return true as we're handling acceptance in the visualization
+}
+
+// Modify quote_form to use the new visualization
 int quote_form(business &uber, int customer_index) {
-    //Gets the pick up from the user
     string pick_up = read_string("Pick up:");
-   
-    //Gets the drop off from the user
     string drop_off = read_string("Drop off:");
 
-    //read_service and saves the index of the service
     ServiceWithIndex chosen_service = read_service(uber);
     service selected_service = chosen_service.selected_service;
     int service_index = chosen_service.index;
 
-    //base price
-    int base_price = selected_service.price;
-
-    //calculates distance
-    int travel_time_in_mins = calculate_time_between_addresses(pick_up, drop_off);
-
-    //calculate price
-    int total_price = calculate_price(travel_time_in_mins, base_price);
+    // Get route information
+    route_info route = get_route_info(pick_up, drop_off);
     
-    // Create the quote and assign it to the customer
+    // Calculate price
+    int total_price = calculate_price(route.duration_mins, selected_service.price);
+    
+    // Create the quote
     quote new_quote = create_quote(customer_index, pick_up, drop_off, service_index, total_price);
+    new_quote.route = route;
     
-    // Store the new quote in the business quotes array
+    // Store the quote
     uber.quotes[uber.quote_count] = new_quote;
-    
-    // Assign the index of the new quote to the customer's quote_indexes
     uber.customers[customer_index].quote_indexes[uber.customers[customer_index].quote_count] = uber.quote_count;
-
-    // Update the customer's quote count
     uber.customers[customer_index].quote_count++;
-
-    // Update the total quote count in the business
     uber.quote_count++;
 
-    // Display the quote
-    display_quote(base_price, travel_time_in_mins, total_price);
-
-    return uber.quote_count - 1;
+    // Show quote visualization and get acceptance
+    if(show_quote_acceptance_popup(new_quote, selected_service)) {
+        checks_quote_acceptance_and_create_booking(uber, customer_index, uber.quote_count - 1);
+    } else {
+        // If rejected, return to menu
+        return uber.quote_count - 1;
+    }
 }
 
 //displays all the bookings
@@ -417,37 +547,27 @@ void show_bookings_by_status(business uber, status status, int user_index) {
 
 //asks the customer if the wnat to book the quote givem and create the booking
 void checks_quote_acceptance_and_create_booking(business &uber, int customer_index, int new_quote_index) {
-    
-    // Ask the user if they want to accept the quote
-    string ans = to_lowercase(read_string("Would you like to book this quote [y | n]: "));
-    
-    if (ans == "y" || ans == "yes") {
-        // simulates to find a driver id 
-        int driver_index = 0;
-        
-        // Ask the user for the date of the service
-        string date = read_string("Service_date: ");
+    // Acceptance already handled in the window, so just proceed:
+    int driver_index = 0;
+    string date = read_string("Service_date: ");
 
-        write_line("Waiting for the driver to confirm...");
+    write_line("Waiting for the driver to confirm...");
 
-        // Show popup for driver confirmation
-        bool driver_accepted = show_driver_confirmation_popup(uber.quotes[new_quote_index], uber.services[uber.quotes[new_quote_index].service_index]);
+    bool driver_accepted = show_driver_confirmation_popup(uber.quotes[new_quote_index], uber.services[uber.quotes[new_quote_index].service_index]);
 
-        if (driver_accepted) {
-            // Proceed with booking
-            booking new_booking = create_booking(new_quote_index, driver_index, customer_index, date, uber);
-            write_line("Booking was confirmed by the driver!");
-            display_booking(new_booking, uber);
-        } else {
-            write_line("Booking was rejected by the driver.");
-            // Optionally, update quote status or handle as needed
-        }
-    } 
+    if (driver_accepted) {
+        booking new_booking = create_booking(new_quote_index, driver_index, customer_index, date, uber);
+        write_line("Booking was confirmed by the driver!");
+        display_booking(new_booking, uber);
+    } else {
+        write_line("Booking was rejected by the driver.");
+    }
 }
 
 // Returns true if accepted, false if rejected
 bool show_driver_confirmation_popup(const quote &q, const service &s) {
     window popup = open_window("Driver Confirmation", 400, 300);
+    delay(200);
     bool decision_made = false;
     bool accepted = false;
 
@@ -537,9 +657,6 @@ void customer_logic_manager(string options[], int options_length,  business &ube
         case 2:
             // ask the user all the questions, calculate, create, display and return the quote
             new_quote_index = quote_form(uber, customer_index);
-
-            // If accepted, create and assign the booking
-            checks_quote_acceptance_and_create_booking(uber, customer_index, new_quote_index);
             break;
         case 3:
             //Show all the bookings
