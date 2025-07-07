@@ -14,7 +14,7 @@ const int MAX_BOOKINGS = 100;
 const int MAX_QUOTES = 100;
 const int MAX_DRIVERS = 10;
 const int MAX_CUSTOMERS = 100;
-const double TRAVEL_COST_PER_MINUTE = 2.33;
+const double TRAVEL_COST_PER_MINUTE =3;
 const string GOOGLE_MAPS_API_KEY = "AIzaSyD6kxT0Q93AFEkQdoRW2XKMHk1iznFfw2U"; // Replace with your actual API key
 
 // Enum
