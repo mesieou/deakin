@@ -1,41 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {
-      "SplashKit/1.2.11": {
-        "type": "package",
-        "compile": {
-          "lib/net9.0/SplashKitSDK.dll": {}
-        },
-        "runtime": {
-          "lib/net9.0/SplashKitSDK.dll": {}
-        }
-      }
-    }
+    "net9.0": {}
   },
-  "libraries": {
-    "SplashKit/1.2.11": {
-      "sha512": "p807T7MelPdjDg6vnMCxvRrWVUtcmQZ+8lGorlc+ls4gUpDaQp+L6lhmyzg7uxH7e5xZfWtZVqUpCFBBs8uDSw==",
-      "type": "package",
-      "path": "splashkit/1.2.11",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "lib/net6.0/SplashKitSDK.dll",
-        "lib/net7.0/SplashKitSDK.dll",
-        "lib/net8.0/SplashKitSDK.dll",
-        "lib/net9.0/SplashKitSDK.dll",
-        "readme.md",
-        "splashkit.1.2.11.nupkg.sha512",
-        "splashkit.nuspec"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net9.0": [
-      "SplashKit >= 1.2.11"
-    ]
+    "net9.0": []
   },
   "packageFolders": {
     "/Users/juanbernal/.nuget/packages/": {}
@@ -43,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/week_1.csproj",
-      "projectName": "week_1",
-      "projectPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/week_1.csproj",
+      "projectUniqueName": "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/switch-exercise.csproj",
+      "projectName": "switch-exercise",
+      "projectPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/switch-exercise.csproj",
       "packagesPath": "/Users/juanbernal/.nuget/packages/",
-      "outputPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/obj/",
+      "outputPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/juanbernal/.nuget/NuGet/NuGet.Config"
@@ -79,12 +49,6 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
-        "dependencies": {
-          "SplashKit": {
-            "target": "Package",
-            "version": "[1.2.11, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/week_1.csproj": {}
+    "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/switch-exercise.csproj": {}
   },
   "projects": {
-    "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/week_1.csproj": {
+    "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/switch-exercise.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/week_1.csproj",
-        "projectName": "week_1",
-        "projectPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/week_1.csproj",
+        "projectUniqueName": "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/switch-exercise.csproj",
+        "projectName": "switch-exercise",
+        "projectPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/switch-exercise.csproj",
         "packagesPath": "/Users/juanbernal/.nuget/packages/",
-        "outputPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/week_1/obj/",
+        "outputPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/juanbernal/.nuget/NuGet/NuGet.Config"
@@ -43,12 +43,6 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "dependencies": {
-            "SplashKit": {
-              "target": "Package",
-              "version": "[1.2.11, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

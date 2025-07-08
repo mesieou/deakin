@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/bin/Debug/net9.0/switch-exercise
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/bin/Debug/net9.0/switch-exercise.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/bin/Debug/net9.0/switch-exercise.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/bin/Debug/net9.0/switch-exercise.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/bin/Debug/net9.0/switch-exercise.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/refint/switch-exercise.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/switch-exercise.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/switch-exercise/obj/Debug/net9.0/ref/switch-exercise.dll
