@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/bin/Debug/net9.0/repetition
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/bin/Debug/net9.0/repetition.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/bin/Debug/net9.0/repetition.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/bin/Debug/net9.0/repetition.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/bin/Debug/net9.0/repetition.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/refint/repetition.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/repetition.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/repetition/obj/Debug/net9.0/ref/repetition.dll
