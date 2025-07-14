@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "divisible-four", "divisible-four.csproj", "{823283C7-FDB0-F810-DB60-5A9F39895717}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{823283C7-FDB0-F810-DB60-5A9F39895717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{823283C7-FDB0-F810-DB60-5A9F39895717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{823283C7-FDB0-F810-DB60-5A9F39895717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{823283C7-FDB0-F810-DB60-5A9F39895717}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF1FD882-0402-49D2-8A48-C3724A31EC05}
+	EndGlobalSection
+EndGlobal

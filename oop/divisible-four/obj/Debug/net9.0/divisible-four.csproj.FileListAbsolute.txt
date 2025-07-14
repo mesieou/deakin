@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/bin/Debug/net9.0/divisible-four
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/bin/Debug/net9.0/divisible-four.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/bin/Debug/net9.0/divisible-four.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/bin/Debug/net9.0/divisible-four.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/bin/Debug/net9.0/divisible-four.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/refint/divisible-four.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/divisible-four.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/divisible-four/obj/Debug/net9.0/ref/divisible-four.dll
