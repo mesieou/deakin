@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("do-casting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc89444dc9e38c48f244a66cc2fe05f0685c49ac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccddf738955fc10c80d317cbb85392acada47079")]
 [assembly: System.Reflection.AssemblyProductAttribute("do-casting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("do-casting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
