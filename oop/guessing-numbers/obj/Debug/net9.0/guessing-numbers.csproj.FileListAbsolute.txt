@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/bin/Debug/net9.0/guessing-numbers
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/bin/Debug/net9.0/guessing-numbers.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/bin/Debug/net9.0/guessing-numbers.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/bin/Debug/net9.0/guessing-numbers.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/bin/Debug/net9.0/guessing-numbers.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/refint/guessing-numbers.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/guessing-numbers.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/guessing-numbers/obj/Debug/net9.0/ref/guessing-numbers.dll
