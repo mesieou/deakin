@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/bin/Debug/net9.0/microwave
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/bin/Debug/net9.0/microwave.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/bin/Debug/net9.0/microwave.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/bin/Debug/net9.0/microwave.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/bin/Debug/net9.0/microwave.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/refint/microwave.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/microwave.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/microwave/obj/Debug/net9.0/ref/microwave.dll

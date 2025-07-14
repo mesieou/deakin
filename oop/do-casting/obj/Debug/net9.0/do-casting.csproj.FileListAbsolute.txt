@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/bin/Debug/net9.0/do-casting
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/bin/Debug/net9.0/do-casting.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/bin/Debug/net9.0/do-casting.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/bin/Debug/net9.0/do-casting.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/bin/Debug/net9.0/do-casting.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/refint/do-casting.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/do-casting.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/do-casting/obj/Debug/net9.0/ref/do-casting.dll

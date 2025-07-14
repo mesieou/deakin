@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "PT+g5a55+x0=",
+  "success": true,
+  "projectFilePath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/if-exercise/week_1.csproj",
+  "expectedPackageFiles": [
+    "/Users/juanbernal/.nuget/packages/splashkit/1.2.11/splashkit.1.2.11.nupkg.sha512"
+  ],
+  "logs": []
+}
