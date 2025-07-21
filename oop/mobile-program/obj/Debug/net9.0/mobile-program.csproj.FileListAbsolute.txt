@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/bin/Debug/net9.0/mobile-program
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/bin/Debug/net9.0/mobile-program.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/bin/Debug/net9.0/mobile-program.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/bin/Debug/net9.0/mobile-program.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/bin/Debug/net9.0/mobile-program.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/refint/mobile-program.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/mobile-program.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/mobile-program/obj/Debug/net9.0/ref/mobile-program.dll
