@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("divisible-four")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12286601fa36f5fe1c945e43901a9c9d32e82dc5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64004d8c669a01e0e607d4b08875aa9f189ddb05")]
 [assembly: System.Reflection.AssemblyProductAttribute("divisible-four")]
 [assembly: System.Reflection.AssemblyTitleAttribute("divisible-four")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
