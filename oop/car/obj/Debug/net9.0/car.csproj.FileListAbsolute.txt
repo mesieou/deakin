@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/bin/Debug/net9.0/car
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/bin/Debug/net9.0/car.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/bin/Debug/net9.0/car.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/bin/Debug/net9.0/car.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/bin/Debug/net9.0/car.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/refint/car.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/car.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/car/obj/Debug/net9.0/ref/car.dll
