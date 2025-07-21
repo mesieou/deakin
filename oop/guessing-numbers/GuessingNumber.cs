@@ -45,11 +45,12 @@ class GuessingNumber
         int inputUser1 = GetInt("User 1, type a number between 1 and 10 for user 2 to guess: ");
 
         //Takes the user 2 input and checks is valid.
-        int inputUser2 = GetInt("User 2, type a number between 1 and 10: ");
+        int inputUser2 = 0;
 
         //Checks user 1 input against user 2 input until guessed.
         do
         {
+            inputUser2 = GetInt("User 2, type a number between 1 and 10: ");
             if (inputUser1 == inputUser2)
             {
                 Console.WriteLine("Congrats!, you have guessed the number!.");
