@@ -302,10 +302,49 @@ class Program
 
         static int[] ArrayConvertion(int[,] arr)
         {
-            for (int i = 0; i < arr.GetLength; i++)
+            List<int> result = new List<int>();
+            for (int i = 0; i < arr.GetLength(1); i++)
             {
-                Console.WriteLine(i);
+                for (int j = 0; j < arr.GetLength(0); j++)
+                {
+                    if (arr[j, i] % 2 != 0)
+                    {
+                        result.Add(arr[j, i]);
+                    }
+                }
             }
+            return result.ToArray();
+        }
+
+        static bool testArrConvetion(int[] resultArr, int[] expectedArr)
+        {
+            bool res = true;
+            if (resultArr.Length != expectedArr.Length)
+            {
+                res = false;
+                return res;
+            }
+            for (int i = 0; i < resultArr.Length; i++)
+            {
+                if (resultArr[i] != expectedArr[i])
+                {
+                    res = false;
+                }
+            }
+            return res;
+        }
+
+        int[,] testArr1 = { { 0, 2, 4, 0, 9, 5 }, { 7, 1, 3, 3, 2, 1 }, { 1, 3, 9, 8, 5, 6 }, { 4, 6, 7, 9, 1, 0 } };
+        int[] expectedArr = { 7, 1, 1, 3, 3, 9, 7, 3, 9, 9, 5, 1, 5, 1 };
+        int[] resultArr = ArrayConvertion(testArr1);
+        bool result = testArrConvetion(resultArr, expectedArr);
+        if (result)
+        {
+            Console.WriteLine("Test passed");
+        }
+        else
+        {
+            Console.WriteLine("Test Failed");
         }
 
     }
