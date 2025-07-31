@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/bin/Debug/net9.0/banking-system
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/bin/Debug/net9.0/banking-system.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/bin/Debug/net9.0/banking-system.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/bin/Debug/net9.0/banking-system.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/bin/Debug/net9.0/banking-system.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/refint/banking-system.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/banking-system.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/banking-system/obj/Debug/net9.0/ref/banking-system.dll
