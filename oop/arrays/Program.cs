@@ -199,106 +199,114 @@ class Program
         // bool expectedResultTest4 = false;
         // palindromeCheckTest(test4Result, expectedResultTest4, testNumber4);
 
-        static bool IsSorted(List<int> list)
+        // static bool IsSorted(List<int> list)
+        // {
+        //     //check if list one is not sorted, if so return null
+        //     for (int i = 0; i < list.Count - 1; i++)
+        //     {
+        //         if (list[i] > list[i + 1])
+        //         {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+
+        // static void CheckListsTest(List<int> resultList, List<int> expectedList)
+        // {
+        //     if (resultList == null && expectedList == null)
+        //     {
+        //         Console.WriteLine("Test Passed!");
+        //         return;
+        //     }
+        //     else if (resultList.Count != expectedList.Count)
+        //     {
+        //         Console.WriteLine($"Test Failed. result list length {resultList.Count} and expected list length is {expectedList.Count}");
+        //     }
+        //     else
+        //     {
+        //         for (int i = 0; i < resultList.Count; i++)
+        //         {
+        //             if (resultList[i] != expectedList[i])
+        //             {
+        //                 Console.WriteLine($"Test Failed. result list the value of index {i} is {resultList[i]} and expected list is {expectedList[i]}");
+        //                 break;
+        //             }
+        //         }
+        //         Console.WriteLine("Test Passed!");
+        //     }
+        // }
+        // static List<int> Merge(List<int> list_a, List<int> list_b)
+        // {
+        //     //check if any of the lists are not sorted.
+        //     if (!IsSorted(list_a) || !IsSorted(list_b))
+        //     {
+        //         return null;
+        //     }
+        //     //create a result list
+        //     List<int> result = new List<int>();
+        //     int pointerB = 0;
+        //     int pointerA = 0;
+
+        //     while (pointerA < list_a.Count && pointerB < list_b.Count)
+        //     {
+        //         if (list_a[pointerA] < list_b[pointerB])
+        //         {
+        //             result.Add(list_a[pointerA]);
+        //             pointerA++;
+        //         }
+        //         else
+        //         {
+        //             result.Add(list_b[pointerB]);
+        //             pointerB++;
+        //         }
+        //     }
+        //     while (pointerA < list_a.Count)
+        //     {
+        //         result.Add(list_a[pointerA]);
+        //         pointerA++;
+
+        //     }
+        //     while (pointerB < list_b.Count)
+        //     {
+        //         result.Add(list_b[pointerB]);
+        //         pointerB++;
+
+        //     }
+
+        //     return result;
+        // }
+
+        // List<int> listTest1 = new List<int> { 1, 2, 2, 5 };
+        // List<int> listTest2 = new List<int> { 1, 3, 4, 5, 7 };
+        // List<int> listTest3 = new List<int> { };
+        // List<int> listTest4 = new List<int> { 5, 2, 2, 1 };
+
+        // //test 1: two valid non empty lists merged
+        // List<int> listTest1Expected = new List<int> { 1, 1, 2, 2, 3, 4, 5, 5, 7 };
+        // List<int> listTest1Result = new List<int>();
+        // listTest1Result = Merge(listTest1, listTest2);
+        // CheckListsTest(listTest1Result, listTest1Expected);
+
+        // //test 2: two valid lists, one imput list
+        // List<int> listTest2Expected = new List<int> { 1, 2, 2, 5 };
+        // List<int> listTest2Result = new List<int>();
+        // listTest2Result = Merge(listTest1, listTest3);
+        // CheckListsTest(listTest2Result, listTest2Expected);
+
+        // //test 3: one list invalid
+        // List<int> listTest3Expected = null;
+        // List<int> listTest3Result = new List<int>();
+        // listTest3Result = Merge(listTest4, listTest2);
+        // CheckListsTest(listTest3Result, listTest3Expected);
+
+        static int[] ArrayConvertion(int[,] arr)
         {
-            //check if list one is not sorted, if so return null
-            for (int i = 0; i < list.Count - 1; i++)
+            for (int i = 0; i < arr.GetLength; i++)
             {
-                if (list[i] > list[i + 1])
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        static void CheckListsTest(List<int> resultList, List<int> expectedList)
-        {
-            if (resultList == null && expectedList == null)
-            {
-                Console.WriteLine("Test Passed!");
-                return;
-            }
-            else if (resultList.Count != expectedList.Count)
-            {
-                Console.WriteLine($"Test Failed. result list length {resultList.Count} and expected list length is {expectedList.Count}");
-            }
-            else
-            {
-                for (int i = 0; i < resultList.Count; i++)
-                {
-                    if (resultList[i] != expectedList[i])
-                    {
-                        Console.WriteLine($"Test Failed. result list the value of index {i} is {resultList[i]} and expected list is {expectedList[i]}");
-                        break;
-                    }
-                }
-                Console.WriteLine("Test Passed!");
+                Console.WriteLine(i);
             }
         }
-        static List<int> Merge(List<int> list_a, List<int> list_b)
-        {
-            //check if any of the lists are not sorted.
-            if (!IsSorted(list_a) || !IsSorted(list_b))
-            {
-                return null;
-            }
-            //create a result list
-            List<int> result = new List<int>();
-            int pointerB = 0;
-            int pointerA = 0;
-
-            while (pointerA < list_a.Count && pointerB < list_b.Count)
-            {
-                if (list_a[pointerA] < list_b[pointerB])
-                {
-                    result.Add(list_a[pointerA]);
-                    pointerA++;
-                }
-                else
-                {
-                    result.Add(list_b[pointerB]);
-                    pointerB++;
-                }
-            }
-            while (pointerA < list_a.Count)
-            {
-                result.Add(list_a[pointerA]);
-                pointerA++;
-
-            }
-            while (pointerB < list_b.Count)
-            {
-                result.Add(list_b[pointerB]);
-                pointerB++;
-
-            }
-
-            return result;
-        }
-
-        List<int> listTest1 = new List<int> { 1, 2, 2, 5 };
-        List<int> listTest2 = new List<int> { 1, 3, 4, 5, 7 };
-        List<int> listTest3 = new List<int> { };
-        List<int> listTest4 = new List<int> { 5, 2, 2, 1 };
-
-        //test 1: two valid non empty lists merged
-        List<int> listTest1Expected = new List<int> { 1, 1, 2, 2, 3, 4, 5, 5, 7 };
-        List<int> listTest1Result = new List<int>();
-        listTest1Result = Merge(listTest1, listTest2);
-        CheckListsTest(listTest1Result, listTest1Expected);
-
-        //test 2: two valid lists, one imput list
-        List<int> listTest2Expected = new List<int> { 1, 2, 2, 5 };
-        List<int> listTest2Result = new List<int>();
-        listTest2Result = Merge(listTest1, listTest3);
-        CheckListsTest(listTest2Result, listTest2Expected);
-
-        //test 3: one list invalid
-        List<int> listTest3Expected = null;
-        List<int> listTest3Result = new List<int>();
-        listTest3Result = Merge(listTest4, listTest2);
-        CheckListsTest(listTest3Result, listTest3Expected);
 
     }
 }
