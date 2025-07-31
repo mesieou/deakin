@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/bin/Debug/net9.0/arrays
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/bin/Debug/net9.0/arrays.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/bin/Debug/net9.0/arrays.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/bin/Debug/net9.0/arrays.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/bin/Debug/net9.0/arrays.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/refint/arrays.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/arrays.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/arrays/obj/Debug/net9.0/ref/arrays.dll
