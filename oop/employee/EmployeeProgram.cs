@@ -68,6 +68,11 @@ class EmployeeProgram
     {
         // Under 17200
         Employee juan = new Employee("Juan", 15000);
+
+        Employee james = new Employee("James", 100000);
+        james.raiseSalary(200);
+        james.tax();
+
         Console.WriteLine("Name: " + juan.getName() +
                          "\nSalary: " + juan.getSalary());
         Console.ReadLine();
@@ -87,7 +92,7 @@ class EmployeeProgram
                          "\nNew Salary: " + albert.getSalary() +
                          "\nTax:  " + albert.tax());
         Console.ReadLine();
-       
+
         // between 37000 and 90000
         Employee sam = new Employee("Sam", 43000);
 
@@ -113,5 +118,7 @@ class EmployeeProgram
         Console.ReadLine();
 
     }
+    
+
 
 }

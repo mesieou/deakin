@@ -18,7 +18,7 @@ class Account
     public void Withdraw(double amount)
     {
 
-        if (this.balance - amount > 0)
+        if (this.balance - amount >= 0)
         {
             this.balance -= amount;
         }
@@ -49,6 +49,15 @@ class TestAccount()
     {
         //test account initialisation
         Account savings = new Account("Savings", 350);
+        Account daily = new Account("Dy", 100);
+        daily.Deposit(100);
+        daily.Print();
+        daily.Withdraw(300);
+        daily.Print();
+        daily.Withdraw(200);
+        daily.Print();
+
+
         savings.Print();
 
         //test deposit
