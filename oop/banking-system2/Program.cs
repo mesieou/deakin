@@ -15,7 +15,8 @@
         {
             this.balance += amount;
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
@@ -38,7 +39,32 @@
         }
     }
 
-    class BankSystem()
+}
+enum MenuOption { Withdraw = 1, Deposit, Print, Quit }
+class BankSystem()
+{
+    static int ReadUserOption()
     {
+        int option = 0;
+        int enumSize = Enum.GetValues(typeof(MenuOption)).Length;
+
+        do
+        {
+            Console.WriteLine($"Please type a number a number from the menu: ");
+            foreach (MenuOption choice in Enum.GetValues(typeof(MenuOption)))
+            {
+                Console.WriteLine($"{(int)choice}. {choice}");
+            }
+            option = Convert.ToInt32(Console.ReadLine());
+
+        } while (option < 1 || option > enumSize);
+        return option;
+    }
+
+    static void Main()
+    {
+        int choice = ReadUserOption();
+        Console.WriteLine(choice);
 
     }
+}
