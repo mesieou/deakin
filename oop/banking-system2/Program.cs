@@ -39,6 +39,17 @@
         }
     }
 
+    public void Print()
+    {
+        Console.WriteLine($"Account Name: {this.name}");
+        Console.WriteLine($"Account Balance: {this.balance}");
+        Console.WriteLine();
+    }
+
+    public string Name()
+    {
+        return this.name;
+    }
 }
 enum MenuOption { Withdraw = 1, Deposit, Print, Quit }
 class BankSystem()
@@ -50,21 +61,120 @@ class BankSystem()
 
         do
         {
-            Console.WriteLine($"Please type a number a number from the menu: ");
+            string menuMessage = "Please type a number from the menu:\n";
             foreach (MenuOption choice in Enum.GetValues(typeof(MenuOption)))
             {
-                Console.WriteLine($"{(int)choice}. {choice}");
+                menuMessage += $"{(int)choice}. {choice}\n";
             }
-            option = Convert.ToInt32(Console.ReadLine());
+            option = ReadInteger(menuMessage);
+
 
         } while (option < 1 || option > enumSize);
         return option;
     }
 
+    static string ReadString(string message = "")
+    {
+        string reply;
+        int number;
+        do
+        {
+            Console.WriteLine(message);
+            reply = Console.ReadLine();
+
+        } while (int.TryParse(reply, out number));
+        return reply;
+    }
+
+    static int ReadInteger(string message = "")
+    {
+        string reply;
+        int number;
+        do
+        {
+            if (!string.IsNullOrEmpty(message))
+                Console.WriteLine(message);
+
+            reply = Console.ReadLine();
+
+        } while (!int.TryParse(reply, out number));
+
+        return number;
+    }
+
     static void Main()
     {
-        int choice = ReadUserOption();
-        Console.WriteLine(choice);
+        int choice = 0;
+        //test account initialisation
+        Account savings = new Account("Savings", 350);
+        string userIsSure = "";
+
+        do
+        {
+            choice = ReadUserOption();
+            switch (choice)
+            {
+                case 1:
+                    DoWithdraw(savings);
+                    DoPrint(savings);
+                    break;
+                case 2:
+                    DoDeposit(savings);
+                    DoPrint(savings);
+                    break;
+                case 3:
+                    DoPrint(savings);
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    break;
+            }
+        } while (choice != 4);
+
+        bool IsSure(string userReply)
+        {
+            while (userReply != "y" || userReply != "n")
+            {
+                Console.WriteLine("please type y or n only");
+            }
+            if (userReply.ToLower() == "y")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        void DoDeposit(Account account)
+        {
+            int amount = ReadInteger("How much would you like to deposit?:");
+
+            string ans = ReadString("Are you sure you want to ${MenuOption.Deposit} ${amount}? Y/N");
+            if (IsSure(ans))
+            {
+                account.Deposit(amount);
+            }
+        }
+
+        void DoWithdraw(Account account)
+        {
+            int amount = ReadInteger("How much would you like to withdraw?:");
+
+            string ans = ReadString("Are you sure you want to ${MenuOption.Withdraw} ${amount}? Y/N");
+            if (IsSure(ans))
+            {
+                account.Withdraw(amount);
+            }
+        }
+
+        void DoPrint(Account account)
+        {
+            account.Print();
+        }
 
     }
 }
