@@ -105,7 +105,7 @@ class Program
             Console.WriteLine($"The current largest number is: {currLargest}");
         }
 
-        initialise ans assign a multidimentional array
+        // initialise ans assign a multidimentional array
         int[,] myMultiDimArr = { { 1, 2, 3, 4 }, { 1, 1, 1, 1 }, { 2, 2, 2, 2 } };
 
         //looop through the multidimentional array
@@ -118,7 +118,7 @@ class Program
             Console.WriteLine();
         }
 
-        declaring a list
+        // declaring a list
         List<string> myList = new List<string>();
 
         //create a random value
@@ -139,7 +139,7 @@ class Program
             Console.WriteLine(myList[i]);
         }
 
-        method palindrome
+        // method palindrome
         static bool Palindrome(int[] array)
         {
             //return false immediatelly if the array is less than one element.
