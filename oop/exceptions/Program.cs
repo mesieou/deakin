@@ -29,114 +29,114 @@ class Program
 {
     static void Main()
     {
-        // //NullReferenceException
-        // Account myAccount = null;
+        //NullReferenceException
+        Account myAccount = null;
 
-        // try
-        // {
-        //     myAccount.Withdraw(50);
-        // }
-        // catch (NullReferenceException ex)
-        // {
-        //     Console.WriteLine("NullReferenceException found: " + ex.Message);
-        // }
+        try
+        {
+            myAccount.Withdraw(50);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("NullReferenceException found: " + ex.Message);
+        }
 
-        // //IndexOutOfRangeException
-        // int[] array = new int[100];
-        // try
-        // {
-        //     array[101] = 33;
+        //IndexOutOfRangeException
+        int[] array = new int[100];
+        try
+        {
+            array[101] = 33;
 
-        // }
-        // catch (IndexOutOfRangeException ex)
-        // {
+        }
+        catch (IndexOutOfRangeException ex)
+        {
 
-        //     Console.WriteLine("IndexOutOfRangeException found: " + ex.Message);
-        // }
-
-
-        // //StackOverflowException
-        // static void RecursiveMethod()
-        // {
-        //     // This method keeps calling itself with no stop condition
-        //     RecursiveMethod();
-        // }
-
-        // try
-        // {
-        //     RecursiveMethod();
-        // }
-        // catch (StackOverflowException ex)
-        // {
-
-        //     Console.WriteLine("StackOverflowException found: " + ex.Message);
-        // }
+            Console.WriteLine("IndexOutOfRangeException found: " + ex.Message);
+        }
 
 
-        // //OutOfMemoryException
-        // try
-        // {
-        //     List<byte[]> allocations = new List<byte[]>();
+        //StackOverflowException
+        static void RecursiveMethod()
+        {
+            // This method keeps calling itself with no stop condition
+            RecursiveMethod();
+        }
 
-        //     while (true)
-        //     {
-        //         // Allocate 100 MB chunks repeatedly
-        //         allocations.Add(new byte[100_000_000]);
-        //     }
-        // }
-        // catch (OutOfMemoryException ex)
-        // {
-        //     Console.WriteLine("OutOfMemoryException found: " + ex.Message);
-        // }
+        try
+        {
+            RecursiveMethod();
+        }
+        catch (StackOverflowException ex)
+        {
 
-        //DivideByZeroException
-        // try
-        // {
-        //     int a = 10;
-        //     int b = 0;
-        //     int result = a / b;
-        // }
-        // catch (DivideByZeroException ex)
-        // {
-        //     Console.WriteLine("DivideByZeroException found: " + ex.Message);
+            Console.WriteLine("StackOverflowException found: " + ex.Message);
+        }
 
-        // }
 
-        //ArgumentNullException
-        // string text = null;
-        // Console.WriteLine(text.Length);
+        //OutOfMemoryException
+        try
+        {
+            List<byte[]> allocations = new List<byte[]>();
 
-        //ArgumentOutOfRangeException
-        // string text = "hello";
-        // string sub = text.Substring(10);
+            while (true)
+            {
+                // Allocate 100 MB chunks repeatedly
+                allocations.Add(new byte[100_000_000]);
+            }
+        }
+        catch (OutOfMemoryException ex)
+        {
+            Console.WriteLine("OutOfMemoryException found: " + ex.Message);
+        }
 
-        //FormatException
-        // try
-        // {
-        //     int num = int.Parse("abc");
-        // }
-        // catch (FormatException ex)
-        // {
-        //     Console.WriteLine("FormatException found: " + ex.Message);
-        // }
+        // DivideByZeroException
+        try
+        {
+            int a = 10;
+            int b = 0;
+            int result = a / b;
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine("DivideByZeroException found: " + ex.Message);
 
-        //ArgumentException
-        // static void SetUsername(string username)
-        // {
-        //     if (username.Length < 3)
-        //         throw new ArgumentException("Username must be at least 3 characters long.", nameof(username));
-        // }
+        }
 
-        // try
-        // {
-        //     SetUsername("Jo");
-        // }
-        // catch (ArgumentException ex)
-        // {
-        //     Console.WriteLine("ArgumentException found: " + ex.Message);
-        // }
+        // ArgumentNullException
+        string text = null;
+        Console.WriteLine(text.Length);
 
-        //SystemException
+        // ArgumentOutOfRangeException
+        string text2 = "hello";
+        string sub = text2.Substring(10);
+
+        // FormatException
+        try
+        {
+            int num = int.Parse("abc");
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("FormatException found: " + ex.Message);
+        }
+
+        // ArgumentException
+        static void SetUsername(string username)
+        {
+            if (username.Length < 3)
+                throw new ArgumentException("Username must be at least 3 characters long.", nameof(username));
+        }
+
+        try
+        {
+            SetUsername("Jo");
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine("ArgumentException found: " + ex.Message);
+        }
+
+        // SystemException
         try
         {
             int[] arr = new int[3];
@@ -146,8 +146,6 @@ class Program
         {
             Console.WriteLine($"Caught a system exception: {ex.GetType().Name} - {ex.Message}");
         }
-
-
     }
 }
 
