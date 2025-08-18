@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "my-polynomial/1.0.0": {
+        "runtime": {
+          "my-polynomial.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "my-polynomial/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

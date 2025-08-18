@@ -1,0 +1,15 @@
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/bin/Debug/net9.0/my-polynomial
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/bin/Debug/net9.0/my-polynomial.deps.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/bin/Debug/net9.0/my-polynomial.runtimeconfig.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/bin/Debug/net9.0/my-polynomial.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/bin/Debug/net9.0/my-polynomial.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.AssemblyInfoInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.AssemblyInfo.cs
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.csproj.CoreCompileInputs.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.sourcelink.json
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/refint/my-polynomial.dll
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.pdb
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/my-polynomial.genruntimeconfig.cache
+/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/Debug/net9.0/ref/my-polynomial.dll
