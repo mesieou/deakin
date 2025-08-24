@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/juanbernal/Coding/deakin/inheritance/inheritance.csproj",
+      "projectUniqueName": "/Users/juanbernal/Coding/deakin/oop/inheritance/inheritance.csproj",
       "projectName": "inheritance",
-      "projectPath": "/Users/juanbernal/Coding/deakin/inheritance/inheritance.csproj",
+      "projectPath": "/Users/juanbernal/Coding/deakin/oop/inheritance/inheritance.csproj",
       "packagesPath": "/Users/juanbernal/.nuget/packages/",
-      "outputPath": "/Users/juanbernal/Coding/deakin/inheritance/obj/",
+      "outputPath": "/Users/juanbernal/Coding/deakin/oop/inheritance/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/juanbernal/.nuget/NuGet/NuGet.Config"

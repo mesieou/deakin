@@ -1,0 +1,15 @@
+/Users/juanbernal/Coding/deakin/oop/inheritance/bin/Debug/net9.0/inheritance
+/Users/juanbernal/Coding/deakin/oop/inheritance/bin/Debug/net9.0/inheritance.deps.json
+/Users/juanbernal/Coding/deakin/oop/inheritance/bin/Debug/net9.0/inheritance.runtimeconfig.json
+/Users/juanbernal/Coding/deakin/oop/inheritance/bin/Debug/net9.0/inheritance.dll
+/Users/juanbernal/Coding/deakin/oop/inheritance/bin/Debug/net9.0/inheritance.pdb
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.AssemblyInfoInputs.cache
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.AssemblyInfo.cs
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.csproj.CoreCompileInputs.cache
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.sourcelink.json
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.dll
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/refint/inheritance.dll
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.pdb
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/inheritance.genruntimeconfig.cache
+/Users/juanbernal/Coding/deakin/oop/inheritance/obj/Debug/net9.0/ref/inheritance.dll
