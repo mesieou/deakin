@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "inheritance/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/inheritance.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/inheritance.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "inheritance/1.0.0": {
+      "type": "project",
+      "path": "../ZooPark/inheritance.csproj",
+      "msbuildProject": "../ZooPark/inheritance.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "inheritance >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/juanbernal/.nuget/packages/": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/juanbernal/Coding/deakin/oop/inheritance/ZooPark/inheritance.csproj",
-      "projectName": "inheritance",
-      "projectPath": "/Users/juanbernal/Coding/deakin/oop/inheritance/ZooPark/inheritance.csproj",
+      "projectUniqueName": "/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/Animals.csproj",
+      "projectName": "Animals",
+      "projectPath": "/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/Animals.csproj",
       "packagesPath": "/Users/juanbernal/.nuget/packages/",
-      "outputPath": "/Users/juanbernal/Coding/deakin/oop/inheritance/ZooPark/obj/",
+      "outputPath": "/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/juanbernal/.nuget/NuGet/NuGet.Config"
@@ -31,7 +50,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/juanbernal/Coding/deakin/oop/inheritance/ZooPark/inheritance.csproj": {
+              "projectPath": "/Users/juanbernal/Coding/deakin/oop/inheritance/ZooPark/inheritance.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
