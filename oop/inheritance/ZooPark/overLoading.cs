@@ -4,7 +4,7 @@ namespace OverloadingDemo
 {
     public class Overloading
     {
-        static void Main(string[] args)
+        static void OverloadingMain(string[] args)  // Renamed to avoid conflict
         {
             Console.WriteLine("=== Method Overloading Demonstration ===\n");
 

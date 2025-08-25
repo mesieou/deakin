@@ -1,6 +1,0 @@
-/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/obj/Debug/net9.0/Animals.csproj.AssemblyReference.cache
-/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/obj/Debug/net9.0/Animals.GeneratedMSBuildEditorConfig.editorconfig
-/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/obj/Debug/net9.0/Animals.AssemblyInfoInputs.cache
-/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/obj/Debug/net9.0/Animals.AssemblyInfo.cs
-/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/obj/Debug/net9.0/Animals.csproj.CoreCompileInputs.cache
-/Users/juanbernal/Coding/deakin/oop/inheritance/Animals/obj/Debug/net9.0/Animals.sourcelink.json
