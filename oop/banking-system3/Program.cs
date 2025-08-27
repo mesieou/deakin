@@ -51,7 +51,7 @@
     return this.name;
   }
 }
-enum MenuOption { Withdraw = 1, Deposit, Print, Quit }
+enum MenuOption { Withdraw = 1, Deposit, Transfer, Print, Quit }
 class BankSystem()
 {
   static int ReadUserOption()
@@ -107,6 +107,7 @@ class BankSystem()
     int choice = 0;
     //test account initialisation
     Account savings = new Account("Savings", 350);
+    Account transactional = new Account("Transactional", 100);
     string userIsSure = "";
 
     do
@@ -123,6 +124,11 @@ class BankSystem()
           DoPrint(savings);
           break;
         case 3:
+          DoTransfer(savings, transactional);
+          DoPrint(savings);
+          DoPrint(transactional);
+          break;
+        case 4:
           DoPrint(savings);
           break;
         default:
@@ -156,7 +162,9 @@ class BankSystem()
       string ans = ReadString($"Are you sure you want to {MenuOption.Deposit} {amount}? Y/N");
       if (IsSure(ans))
       {
-        account.Deposit(amount);
+        DepositTransaction transaction = new DepositTransaction(account, amount);
+        transaction.Execute();
+        transaction.Print();
       }
     }
 
@@ -168,6 +176,19 @@ class BankSystem()
       if (IsSure(ans))
       {
         WithdrawTransaction transaction = new WithdrawTransaction(account, amount);
+        transaction.Execute();
+        transaction.Print();
+      }
+    }
+
+    void DoTransfer(Account fromAccount, Account toAccount)
+    {
+      int amount = ReadInteger("How much would you like to transfer?:");
+
+      string ans = ReadString($"Are you sure you want to {MenuOption.Withdraw} {amount} from {fromAccount.Name()} to {toAccount.Name()}? Y/N");
+      if (IsSure(ans))
+      {
+        TransferTransaction transaction = new TransferTransaction(fromAccount, toAccount, amount);
         transaction.Execute();
         transaction.Print();
       }
