@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/my-polynomial.csproj",
+      "projectUniqueName": "/Users/juanbernal/Coding/deakin/oop/my-polynomial/my-polynomial.csproj",
       "projectName": "my-polynomial",
-      "projectPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/my-polynomial.csproj",
+      "projectPath": "/Users/juanbernal/Coding/deakin/oop/my-polynomial/my-polynomial.csproj",
       "packagesPath": "/Users/juanbernal/.nuget/packages/",
-      "outputPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/my-polynomial/obj/",
+      "outputPath": "/Users/juanbernal/Coding/deakin/oop/my-polynomial/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/juanbernal/.nuget/NuGet/NuGet.Config"
@@ -44,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("my-time")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd5ec57078ef94d0fe66635586edeff438463e42")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db9f3241b79c4509f0260b6c56975d581a4c2923")]
 [assembly: System.Reflection.AssemblyProductAttribute("my-time")]
 [assembly: System.Reflection.AssemblyTitleAttribute("my-time")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

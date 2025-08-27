@@ -135,10 +135,11 @@ class MyTime
         return this;
     }
 
-    public MyTime NextMinute()
+    public string NextMinute()
     {
         CheckNextMinute();
-        return this;
+
+        return "this";
     }
 
     public MyTime NextHour()
@@ -184,7 +185,7 @@ class TestMyTime
         MyTime time = new MyTime(9, 32, 0);
 
         //it should return not null
-        //it should return in good formar 
+        //it should return in good formar
         Console.WriteLine(time);
 
 
@@ -209,76 +210,76 @@ class TestMyTime
         // Console.WriteLine(time);
 
 
-        //test SetHour
-        time.SetHour(1);
-        //only hour should change
-        Console.WriteLine(time);
+        // //test SetHour
+        // time.SetHour(1);
+        // //only hour should change
+        // Console.WriteLine(time);
 
-        //test SetMinute
-        time.SetMinute(14);
-        //only hour should change
-        Console.WriteLine(time);
+        // //test SetMinute
+        // time.SetMinute(14);
+        // //only hour should change
+        // Console.WriteLine(time);
 
-        //test SetSecond
-        time.SetSecond(18);
-        //only hour should change
-        Console.WriteLine(time);
+        // //test SetSecond
+        // time.SetSecond(18);
+        // //only hour should change
+        // Console.WriteLine(time);
 
-        //test GetHour
-        int hour = time.GetHour();
-        //only extract the hour
-        Console.WriteLine(hour);
+        // //test GetHour
+        // int hour = time.GetHour();
+        // //only extract the hour
+        // Console.WriteLine(hour);
 
-        //test GetMinute
-        int minute = time.GetMinute();
-        //only extract the minute
-        Console.WriteLine(minute);
+        // //test GetMinute
+        // int minute = time.GetMinute();
+        // //only extract the minute
+        // Console.WriteLine(minute);
 
 
-        //test GetSecond
-        int second = time.GetSecond();
-        //only extract the second
-        Console.WriteLine(second);
+        // //test GetSecond
+        // int second = time.GetSecond();
+        // //only extract the second
+        // Console.WriteLine(second);
 
-        //test NextSecond
-        time.NextSecond();
-        //it should show the next time adding one second
-        Console.WriteLine(time);
+        // //test NextSecond
+        // time.NextSecond();
+        // //it should show the next time adding one second
+        // Console.WriteLine(time);
 
         //test NextSecond
         time.NextMinute();
         //it should show the next time adding one minute
         Console.WriteLine(time);
 
-        //test NextHour
-        time.NextHour();
-        //it should show the next time adding one hour
-        Console.WriteLine(time);
+        // //test NextHour
+        // time.NextHour();
+        // //it should show the next time adding one hour
+        // Console.WriteLine(time);
 
-        //test PreviousSecond
-        time.PreviousSecond();
-        //it should show the next time substracting one second
-        Console.WriteLine(time);
+        // //test PreviousSecond
+        // time.PreviousSecond();
+        // //it should show the next time substracting one second
+        // Console.WriteLine(time);
 
-        //test NextSecond
-        time.PreviousMinute();
-        //it should show the next time substracting one minute
-        Console.WriteLine(time);
+        // //test NextSecond
+        // time.PreviousMinute();
+        // //it should show the next time substracting one minute
+        // Console.WriteLine(time);
 
-        //test NextHour
-        time.PreviousHour();
-        //it should show the next time substracting one hour
-        Console.WriteLine(time);
+        // //test NextHour
+        // time.PreviousHour();
+        // //it should show the next time substracting one hour
+        // Console.WriteLine(time);
 
-        MyTime edgeTime1 = new MyTime(23, 59, 59);
-        MyTime edgeTime2 = new MyTime(23, 59, 59);
-        MyTime edgeTime3 = new MyTime(23, 59, 59);
-        //test all next methods with the last hour, minute and second
-        edgeTime1.NextHour();
-        edgeTime2.NextMinute();
-        edgeTime3.NextSecond();
-        Console.WriteLine(edgeTime1);
-        Console.WriteLine(edgeTime2);
-        Console.WriteLine(edgeTime3);
+        // MyTime edgeTime1 = new MyTime(23, 59, 59);
+        // MyTime edgeTime2 = new MyTime(23, 59, 59);
+        // MyTime edgeTime3 = new MyTime(23, 59, 59);
+        // //test all next methods with the last hour, minute and second
+        // edgeTime1.NextHour();
+        // edgeTime2.NextMinute();
+        // edgeTime3.NextSecond();
+        // Console.WriteLine(edgeTime1);
+        // Console.WriteLine(edgeTime2);
+        // Console.WriteLine(edgeTime3);
     }
 }

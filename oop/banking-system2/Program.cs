@@ -133,7 +133,7 @@ class BankSystem()
 
         bool IsSure(string userReply)
         {
-            while (userReply != "y" || userReply != "n")
+            while (userReply.ToLower() != "y" && userReply.ToLower() != "n")
             {
                 Console.WriteLine("please type y or n only");
             }

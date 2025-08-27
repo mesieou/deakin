@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/juanbernal/code/mesieou/2025/deakin/oop/exceptions/exceptions.csproj": {}
+    "/Users/juanbernal/Coding/deakin/oop/exceptions/exceptions.csproj": {}
   },
   "projects": {
-    "/Users/juanbernal/code/mesieou/2025/deakin/oop/exceptions/exceptions.csproj": {
+    "/Users/juanbernal/Coding/deakin/oop/exceptions/exceptions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/juanbernal/code/mesieou/2025/deakin/oop/exceptions/exceptions.csproj",
+        "projectUniqueName": "/Users/juanbernal/Coding/deakin/oop/exceptions/exceptions.csproj",
         "projectName": "exceptions",
-        "projectPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/exceptions/exceptions.csproj",
+        "projectPath": "/Users/juanbernal/Coding/deakin/oop/exceptions/exceptions.csproj",
         "packagesPath": "/Users/juanbernal/.nuget/packages/",
-        "outputPath": "/Users/juanbernal/code/mesieou/2025/deakin/oop/exceptions/obj/",
+        "outputPath": "/Users/juanbernal/Coding/deakin/oop/exceptions/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/juanbernal/.nuget/NuGet/NuGet.Config"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
