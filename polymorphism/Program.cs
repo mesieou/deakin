@@ -34,6 +34,13 @@ class Program
 
     birds.Add(new Bird() { name = "Birdy" });
 
+    List<Duck> ducks = new List<Duck>();
+    ducks.Add(duck1);
+    ducks.Add(duck2);
+
+    IEnumerable<Bird> moreBirds = ducks;
+    birds.AddRange(moreBirds);
+
     foreach (Bird bird in birds)
     {
       Console.WriteLine(bird);
