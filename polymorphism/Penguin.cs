@@ -1,9 +1,12 @@
 class Penguin : Bird
 {
-  public double size { get; set; }
-  public String kind { get; set; }
+  public override void Fly()
+  {
+    Console.WriteLine("Penguins can't fly!");
+  }
+
   public override string ToString()
   {
-    return $"A duck named {base.name} is a {size} inch {kind})";
+    return $"A penguin named {base.name}";
   }
 }
