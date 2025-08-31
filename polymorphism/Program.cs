@@ -4,44 +4,40 @@ class Program
 {
   static void Main(string[] args)
   {
-    Bird bird1 = new Bird();
-    Bird bird2 = new Bird();
+    List<Bird> birds = new List<Bird>();
 
+    Bird bird1 = new Bird();
     bird1.name = "Tweety";
+    Bird bird2 = new Bird();
     bird2.name = "Polly";
 
-    Console.WriteLine(bird1.ToString());
-    bird1.Fly();
-
-    Console.WriteLine(bird2.ToString());
-    bird2.Fly();
-
-    Console.ReadLine();
-
     Penguin penguin1 = new Penguin();
-    Penguin penguin2 = new Penguin();
-
     penguin1.name = "Pingu";
+    Penguin penguin2 = new Penguin();
     penguin2.name = "Mumble";
 
-    Console.WriteLine(penguin1.ToString());
-    penguin1.Fly();
-
-    Console.WriteLine(penguin2.ToString());
-    penguin2.Fly();
-
     Duck duck1 = new Duck();
-    Duck duck2 = new Duck();
-
     duck1.name = "Donald";
     duck1.size = 26.5;
     duck1.kind = "Mallard";
-
+    Duck duck2 = new Duck();
     duck2.name = "Daffy";
     duck2.size = 15.0;
     duck2.kind = "Black Duck";
 
-    Console.WriteLine(duck1.ToString());
-    Console.WriteLine(duck2.ToString());
+    birds.Add(bird1);
+    birds.Add(bird2);
+    birds.Add(penguin1);
+    birds.Add(penguin2);
+    birds.Add(duck1);
+    birds.Add(duck2);
+
+    birds.Add(new Bird() { name = "Birdy" });
+
+    foreach (Bird bird in birds)
+    {
+      Console.WriteLine(bird);
+    }
+
   }
 }
