@@ -1,0 +1,15 @@
+/Users/juanbernal/Coding/deakin/polymorphism/bin/Debug/net9.0/polymorphism
+/Users/juanbernal/Coding/deakin/polymorphism/bin/Debug/net9.0/polymorphism.deps.json
+/Users/juanbernal/Coding/deakin/polymorphism/bin/Debug/net9.0/polymorphism.runtimeconfig.json
+/Users/juanbernal/Coding/deakin/polymorphism/bin/Debug/net9.0/polymorphism.dll
+/Users/juanbernal/Coding/deakin/polymorphism/bin/Debug/net9.0/polymorphism.pdb
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.AssemblyInfoInputs.cache
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.AssemblyInfo.cs
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.csproj.CoreCompileInputs.cache
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.sourcelink.json
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.dll
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/refint/polymorphism.dll
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.pdb
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/polymorphism.genruntimeconfig.cache
+/Users/juanbernal/Coding/deakin/polymorphism/obj/Debug/net9.0/ref/polymorphism.dll
