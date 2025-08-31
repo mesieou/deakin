@@ -1,0 +1,15 @@
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.AssemblyInfoInputs.cache
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.AssemblyInfo.cs
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.csproj.CoreCompileInputs.cache
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.sourcelink.json
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/bin/Debug/net9.0/polymorphysim-bug-find
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/bin/Debug/net9.0/polymorphysim-bug-find.deps.json
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/bin/Debug/net9.0/polymorphysim-bug-find.runtimeconfig.json
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/bin/Debug/net9.0/polymorphysim-bug-find.dll
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/bin/Debug/net9.0/polymorphysim-bug-find.pdb
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.dll
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/refint/polymorphysim-bug-find.dll
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.pdb
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/polymorphysim-bug-find.genruntimeconfig.cache
+/Users/juanbernal/Coding/deakin/polymorphysim-bug-find/obj/Debug/net9.0/ref/polymorphysim-bug-find.dll
